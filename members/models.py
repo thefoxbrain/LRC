@@ -1,5 +1,5 @@
 from datetime import date
-from PIL import Image
+# from PIL import Image
 from django.db import models
 
 
@@ -17,7 +17,7 @@ class MembershipType(models.Model):
     
 class Member(models.Model):
     # Personal Information
-    photo = models.ImageField(upload_to='members_photos')
+    # photo = models.ImageField(upload_to='members_photos')
     TITLE_CHOICES = (
         ('MR', 'Mr'),
         ('MRS', 'Mrs'),

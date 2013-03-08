@@ -8,7 +8,7 @@ from members.models import MembershipType
 class MemberAdmin(admin.ModelAdmin):
     fieldsets = [
         ('Personal information', {'fields': [
-                                             'photo',
+                                             # 'photo',
                                              'gender',
                                              ('title', 'first_name', 'last_name'),
                                              'date_of_birth',
