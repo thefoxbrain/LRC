@@ -1,8 +1,19 @@
 from django.shortcuts import render, get_object_or_404
-# from django.http import HttpResponse
-# from django.http import Http404
+
+from django.conf.urls import patterns, url, include
+from django.views.generic import ListView
 
 from members.models import Member
+
+
+urlpatterns = patterns('',
+    (r'^member/$', ListView.as_view(
+        model=Member,
+    )),
+)
+
+
+
 
 def index(request):
     latest_member_list = Member.objects.all().order_by('-start_date')[:5]

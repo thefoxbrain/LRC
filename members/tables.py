@@ -1,8 +1,8 @@
 import django_tables2 as tables
-from tutorial.models import Person
+from members.models import Member
 
-class PersonTable(tables.Table):
+class MemberTable(tables.Table):
     class Meta:
-        model = Person
+        model = Member
         # add class="paleblue" to <table> tag
         attrs = {"class": "paleblue"}

@@ -1,5 +1,73 @@
+<!doctype html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}screen.css" />
+    </head>
+<body>
 <h1>{{ member.first_name }} {{ member.last_name }}</h1>
-</br>
-Gender : {{ member.get_gender_display }}
-{{ member.membership_type|lower }}
 
+<div class="table_left">
+
+<table border=1>
+  <tbody>
+    <tr>
+      <td>Title : </td>
+      <td>{{ member.get_title_display }}</td>
+    </tr>
+    <tr>
+      <td>Name : </td>
+      <td>{{ member.first_name }} {{ member.last_name }}</td>
+    </tr>
+    <tr>
+      <td>Gender : </td>
+      <td>{{ member.get_gender_display }}</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+</div>
+
+<table border=1>
+  <tbody>
+    <tr>
+      <td>Date of Birth : </td>
+      <td>{{ member.date_of_birth }}</td>
+    </tr>
+    <tr>
+      <td>Name : </td>
+      <td>{{ member.first_name }} {{ member.last_name }}</td>
+    </tr>
+    <tr>
+      <td>Gender : </td>
+      <td>{{ member.get_gender_display }}</td>
+    </tr>
+  </tbody>
+  </table>
+
+<br>
+
+<div class="table_left">
+
+<table border=1>
+  <tbody>
+    <tr>
+      <td>Address : </td>
+      <td>{{ member.address }}</td>
+    </tr>
+    <tr>
+      <td>Post Code : </td>
+      <td>{{ post_code }}</td>
+    </tr>
+    <tr>
+      <td>Gender : </td>
+      <td>{{ member.get_gender_display }}</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+</div>
+
+
+
+</body>
+</html>
