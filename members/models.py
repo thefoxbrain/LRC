@@ -92,3 +92,19 @@ class Member(models.Model):
     
     def __unicode__(self):
         return u'%s %s' % (self.first_name, self.last_name)
+    
+class Payment(models.Model):
+    member = models.ForeignKey(Member)
+    payment_note = models.CharField(max_length=200)
+    amount = models.CharField(max_length=200,  blank=True, verbose_name='Amount')
+    payment_date = models.DateField()
+    PAYMENTTYPE_CHOICES = (
+        ('S', 'Standing Order'),
+        ('Q', 'Cheque'),
+        ('C', 'Cash'),
+        ('B', 'Bank Transfer'),
+    )
+    payment_type = models.CharField(max_length=1, choices=PAYMENTTYPE_CHOICES,blank=True)
+    
+    def __unicode__(self):
+        return u'%s %s %s' % (self.member, self.amount, self.payment_date)

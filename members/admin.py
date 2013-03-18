@@ -4,7 +4,13 @@ from django.contrib import admin
 
 from members.models import Member
 from members.models import MembershipType
+from members.models import Payment
 
+class PaymentInline(admin.TabularInline):
+    model = Payment
+    extra = 1
+    fields = ('amount','payment_type','payment_date')
+    ordering = ['-payment_date']
 
 class MemberAdmin(admin.ModelAdmin):
     fieldsets = [
@@ -67,9 +73,18 @@ class MemberAdmin(admin.ModelAdmin):
     }    
     list_display = ('first_name', 'last_name','start_date','membership_type') 
     list_filter = ['first_name','last_name','membership_type']   
-    date_hierarchy = 'start_date'
+    ordering = ['first_name']
     search_fields = ['first_name','last_name']
+    inlines = [PaymentInline] 
 
 admin.site.register(Member, MemberAdmin)
 
 admin.site.register(MembershipType)
+
+class PaymentAdmin(admin.ModelAdmin):
+    list_display = ('member', 'amount','payment_type','payment_date')
+    list_filter = ['member','payment_type','payment_date']
+    search_fields = ['member__first_name','member__last_name']
+    ordering = ['-payment_date']
+
+admin.site.register(Payment, PaymentAdmin)

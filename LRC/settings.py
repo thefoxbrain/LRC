@@ -38,7 +38,11 @@ USE_I18N = True
 
 # If you set this to False, Django will not format dates, numbers and
 # calendars according to the current locale.
-USE_L10N = True
+USE_L10N = False
+
+DATE_FORMAT = 'd-m-Y'
+
+DATETIME_FORMAT = 'd-m-Y H:i'
 
 # If you set this to False, Django will not use timezone-aware datetimes.
 USE_TZ = True
@@ -161,4 +165,8 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.static",
     "django.contrib.messages.context_processors.messages",
     "django.core.context_processors.request"
+)
+
+DATETIME_FORMAT = (
+    '%d/%m/%Y',                 
 )
