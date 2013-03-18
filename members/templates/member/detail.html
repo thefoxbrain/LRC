@@ -15,9 +15,13 @@
       <td>{{ member.get_title_display }}</td>
     </tr>
     <tr>
-      <td>Name : </td>
-      <td>{{ member.first_name }} {{ member.last_name }}</td>
+      <td>First Name : </td>
+      <td>{{ member.first_name }}</td>
     </tr>
+    <tr>
+      <td>Last Name : </td>
+      <td>{{ member.last_name }}</td>
+    </tr>    
     <tr>
       <td>Gender : </td>
       <td>{{ member.get_gender_display }}</td>
@@ -51,21 +55,56 @@
 <table border=1>
   <tbody>
     <tr>
-      <td>Address : </td>
-      <td>{{ member.address }}</td>
+      <td>
+
+<table border=1>
+  <tbody>
+    <tr>
+      <td>Address 1 : </td>
+      <td>{{ member.address_1 }}</td>
     </tr>
+    <tr>
+      <td>Address 2 : </td>
+      <td>{{ member.address_2 }}</td>
+    </tr>
+    <tr>
+      <td>Town/City: </td>
+      <td>{{ member.address_3 }}</td>
+    </tr>
+    <tr>
+      <td>County : </td>
+      <td>{{ member.address_4 }}</td>
+    </tr>            
     <tr>
       <td>Post Code : </td>
       <td>{{ post_code }}</td>
+    </tr>
+  </tbody>
+</table>
+
+	</td>
+    <td>
+
+<table border=1>
+  <tbody>
+    <tr>
+      <td>Date of Birth : </td>
+      <td>{{ member.date_of_birth }}</td>
+    </tr>
+    <tr>
+      <td>Name : </td>
+      <td>{{ member.first_name }} {{ member.last_name }}</td>
     </tr>
     <tr>
       <td>Gender : </td>
       <td>{{ member.get_gender_display }}</td>
     </tr>
   </tbody>
-</table>
-<br>
-</div>
+  </table>
+		</td>	
+		</tr>
+  </tbody>
+    </table>
 
 
 

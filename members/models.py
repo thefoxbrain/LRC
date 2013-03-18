@@ -34,7 +34,10 @@ class Member(models.Model):
         ('F', 'Female'),
     )
     gender = models.CharField(max_length=1, choices=GENDER_CHOICES)
-    address = models.TextField()
+    address_1 = models.CharField(max_length=200,  blank=True, verbose_name='Address Line 1')
+    address_2 = models.CharField(max_length=200,  blank=True, verbose_name='Address Line 2')
+    address_3 = models.CharField(max_length=200,  blank=True, verbose_name='Town/City')
+    address_4 = models.CharField(max_length=200,  blank=True, verbose_name='County')
     post_code = models.CharField(max_length=10)
     home_phone = models.CharField(max_length=20,  blank=True)
     mobile_phone = models.CharField(max_length=20,  blank=True)
@@ -56,12 +59,12 @@ class Member(models.Model):
         ('Y', 'Yes'),
         ('N', 'No'),
     )
-    capsize_drill = models.CharField(max_length=1, choices=YESNO_CHOICES)
+    capsize_drill = models.CharField(max_length=1, choices=YESNO_CHOICES,blank=True)
     
     # Swimming Ability 
-    swim_50  = models.CharField(max_length=1, choices=YESNO_CHOICES, verbose_name='50 metres')
-    swim_5_underwater = models.CharField(max_length=1, choices=YESNO_CHOICES, verbose_name='5 metres underwater')
-    swim_tread = models.CharField(max_length=1, choices=YESNO_CHOICES, verbose_name='Tread water for 2 minutes')
+    swim_50  = models.CharField(max_length=1, choices=YESNO_CHOICES, blank=True,verbose_name='50 metres')
+    swim_5_underwater = models.CharField(max_length=1, choices=YESNO_CHOICES, blank=True,verbose_name='5 metres underwater')
+    swim_tread = models.CharField(max_length=1, choices=YESNO_CHOICES, blank=True,verbose_name='Tread water for 2 minutes')
     
     # Start Date   
     start_date = models.DateField(("Start Date"), default=date.today)

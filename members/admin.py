@@ -14,11 +14,16 @@ class MemberAdmin(admin.ModelAdmin):
                                              'gender',
                                              ('title', 'first_name', 'last_name'),
                                              'date_of_birth',
-                                             'address',
-                                             'post_code',
                                              ('home_phone','mobile_phone'),
                                              'email'                                             
                                              ]}),
+        ('Address', {'fields': [
+                                             'address_1',
+                                             'address_2',
+                                             'address_3',
+                                             'address_4',
+                                             'post_code',
+                                             ]}),                 
         ('Emergency Contact Details', {'fields': [
                                             'em_contact_name',
                                             'em_relationship',

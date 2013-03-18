@@ -10,15 +10,15 @@ table{
 
 table, th, td{
 	table-border: 1px;
+	width:300px;
 }
 
 .table_left {
 	float: left;
-	display: inline-block;
 	padding-right:50px;
-} 
-	
-	
+	clear:left;
+}
+
 td:nth-child(1) {
 	padding-right:5px;
 	text-align:right;
