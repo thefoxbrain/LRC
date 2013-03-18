@@ -4,7 +4,6 @@ from django.contrib import admin
 
 from members.models import Member
 from members.models import MembershipType
-from tutorial.models import Person 
 
 
 class MemberAdmin(admin.ModelAdmin):
@@ -74,5 +73,3 @@ class MemberAdmin(admin.ModelAdmin):
 admin.site.register(Member, MemberAdmin)
 
 admin.site.register(MembershipType)
-
-admin.site.register(Person)
