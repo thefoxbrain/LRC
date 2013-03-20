@@ -1,11 +1,8 @@
-from django.conf.urls import patterns, url
+from django.conf.urls import patterns
 
-from members import views
-
-urlpatterns = patterns('',
+urlpatterns = patterns('members.views',
     # ex: /members/
-    url(r'^$', views.index, name='index'),
+    (r'^$', 'index'),
     # ex: /members/5/
-    url(r'^(?P<member_id>\d+)/$', views.detail, name='detail'),    
-
+    (r'^(?P<member_id>\d+)/$', 'detail'),    
 )

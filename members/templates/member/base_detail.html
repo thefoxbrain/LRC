@@ -1,0 +1,204 @@
+{% extends "base.html" %}
+
+{% block title %}Member Detail{% endblock %}
+
+{% block content %}
+<h1>{{ member.first_name }} {{ member.last_name }}</h1>
+<h3>Personal Information</h3>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Title : </td>
+      <td>{{ member.get_title_display }}</td>
+      <td>Date of Birth : </td>
+      <td>{{ member.date_of_birth }}</td>
+    </tr>
+    <tr>
+      <td>First Name : </td>
+      <td>{{ member.first_name }}</td>
+      <td>Gender : </td>
+      <td>{{ member.get_gender_display }}</td>      
+    </tr>
+    <tr>
+      <td>Last Name : </td>
+      <td>{{ member.last_name }}</td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+  </table>
+
+<br>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Address 1 : </td>
+      <td>{{ member.address_1 }}</td>
+      <td>Home Phone :</td>
+      <td>{{ member.home_phone }}</td>
+    </tr>
+    <tr>
+      <td>Address 2 : </td>
+      <td>{{ member.address_2 }}</td>
+      <td>Mobile Phone :</td>
+      <td>{{ member.mobile_phone }}</td>      
+    </tr>
+    <tr>
+      <td>Town/City : </td>
+      <td>{{ member.address_3 }}</td>
+      <td>Email</td>
+      <td><a href="mailto:{{ member.email }}">{{ member.email }}</a></td>
+    </tr>
+    <tr>
+      <td>County : </td>
+      <td>{{ member.address_4 }}</td>
+      <td></td>
+      <td></td>      
+    </tr>            
+    <tr>
+      <td>Post Code : </td>
+      <td>{{ member.post_code }}</td>
+      <td></td>
+      <td></td>      
+    </tr>
+  </tbody>
+</table>
+
+<h3>Emergency Contact Details</h3>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Name of Contact : </td>
+      <td>{{ member.em_contact_name }}</td>
+      <td>Relationship :</td>
+      <td>{{ member.em_relationship }}</td>
+    </tr>
+    <tr>
+      <td>Contact No. : </td>
+      <td>{{ member.em_contact_no }}</td>
+      <td>Mobile Phone :</td>
+      <td>{{ member.mobile_phone }}</td>      
+    </tr>
+  </tbody>
+</table>
+
+<h3>Rowing Membership</h3>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Membership : </td>
+      <td>{{ member.membership_type }}</td>
+      <td>Rowing Points :</td>
+      <td>{{ member.rowing_points }}</td>  
+    </tr>
+    <tr>
+      <td>British Rowing No. :</td>
+      <td>{{ member.br_membership_no }}</td>
+      <td>Sculling Points :</td>
+      <td>{{ member.sculling_points }}</td>      
+    </tr>
+  </tbody>
+</table>	
+
+<h3>Swimming Ability</h3>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Swim 50 metres : </td>
+      <td>{{ member.get_swim_50_display }}</td>
+    </tr>
+    <tr>
+      <td>Swim 5 underwater : </td>
+      <td>{{ member.get_swim_5_underwater_display }}</td>
+    </tr>
+    <tr>
+      <td>Tread water 2 mins : </td>
+      <td>{{ member.get_swim_tread_display  }}</td>
+    </tr>
+  </tbody>
+  </table>
+  
+<h3>Confirmation and Dates</h3>
+	<table>
+	  <tbody>
+	    <tr>
+	      <td> Created By : </td>
+	      <td></td>
+	      <td>Start Date :</td>
+	      <td>{{ member.start_date }}</td>
+	    </tr>
+	    <tr>
+	      <td>Parent/Guardian : </td>
+	      <td>{{ member.pg_name }}</td>
+	      <td></td>
+	      <td></td>   
+	    </tr>
+	  </tbody>
+	</table>  
+	
+<h3>Health Questionnaire</h3>
+	<table>
+	  <tbody>
+	    <tr>
+	      <td>Good general health? :</td>
+	      <td>{{ member.get_health_1_good_health_display }}</td>
+	      <td>if No - details :</td>
+	      <td>{{ member.health_1_details }}</td>
+	    </tr>
+	  </tbody>
+	</table>  
+	
+	<br>
+	
+	<table>
+	  <tbody>
+	    <tr>
+	      <td>Diabetes : </td>
+	      <td>{{ member.get_health_2_diabetes_display }}</td>
+	      <td>Epilepsy : </td>
+	      <td>{{ member.get_health_2_epilepsy_display }}</td>
+	    </tr>
+	    <tr>
+	      <td>Asthma : </td>
+	      <td>{{ member.get_health_2_asthma_display }}</td>
+	      <td>Dyspraxia : </td>
+	      <td>{{ member.get_health_2_dyspraxia_display }}</td>      
+	    </tr>
+	    <tr>
+	      <td>Heart Disease : </td>
+	      <td>{{ member.get_health_2_heart_disease_display }}</td>
+	      <td>Other :</td>
+	      <td>{{ member.get_health_2_other_display }}</td>
+	    </tr>
+	   	 <tr>
+	      <td></td>
+	      <td></td>
+	      <td>Details :</td>
+	      <td>{{ member.health_2_details }}</td>
+	    </tr>
+	  </tbody>
+	  </table>
+	  
+	<br>
+	  
+	<table>
+	  <tbody>
+	    <tr>
+	      <td>Other conditions affecting Rowing</td>
+	      <td>{{ member.health_3_details }}</td>
+	      <td>Other health conditions</td>
+	      <td>{{ member.health_4_details }}</td>  
+	    </tr>
+	  </tbody>
+	</table>	
+
+
+<br>
+<br>
+<br>
+{% endblock %}

@@ -1,32 +1,33 @@
 body {
+	width: 960px;
+	margin: 0 auto;	
 	font-family:arial;
 	color: black ;
 }
 
-table{
-	/* box-shadow: 5px 5px 5px #888888; */
-	/* border-radius: 15px; */
+table
+{
+	box-shadow: 5px 5px 5px #888888; 
 }
 
-table, th, td{
-	table-border: 1px;
-	width:300px;
+table
+{
+	border-collapse:collapse;
+	border: 1px solid black;
 }
 
-.table_left {
-	float: left;
-	padding-right:50px;
-	clear:left;
-}
 
-td:nth-child(1) {
+
+td:nth-child(odd) {
 	padding-right:5px;
 	text-align:right;
-	width:120px;
+	width:160px;
 	font-weight:bold;
 }
 
-td:nth-child(2) {
+td:nth-child(even) {
 	padding-left:5px;
-    width:200px;
+	text-align:left;
+	width:250px;
 }
+

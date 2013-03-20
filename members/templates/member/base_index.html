@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}List of Members{% endblock %}
+
+{% block content %}
+	<h2>List of Members</h2>
+	{% if latest_member_list %}
+	    <ul>
+	    {% for member in latest_member_list %}
+	        <li><a href="/member/{{ member.id }}/">{{ member.first_name }} {{ member.last_name }}</a></li>
+	    {% endfor %}
+	    </ul>
+	{% else %}
+	    <p>No members are available.</p>
+	{% endif %}
+{% endblock %}
