@@ -4,16 +4,14 @@
 
 {% block content %}
 	<h2>List of Payments</h2>
-	{% if latest_payment_list %}
+	{% if member_payment_list %}
 <table>
   <tbody>
-  	<th>Reference</th>
   	<th>Payment Date</th>
   	<th>Name</th>
   	<th>Amount</th>
     <tr>
-	    {% for payment in latest_payment_list %}
-			<td>{{ payment.id }}</td>
+	    {% for payment in member_payment_list %}
 			<td><a href="/payment/{{ payment.id }}/">{{ payment.payment_date }}</a></td>
 	        <td>{{ payment.member }}</td>
 	        <td>{{ payment.amount }}</a></td>
