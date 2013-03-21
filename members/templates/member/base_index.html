@@ -5,11 +5,21 @@
 {% block content %}
 	<h2>List of Members</h2>
 	{% if latest_member_list %}
-	    <ul>
+<table class=red>
+  <tbody>
+  	<th>Reference</th>
+  	<th>Name</th>
+  	<th>Payments</th>
+    <tr>
 	    {% for member in latest_member_list %}
-	        <li><a href="/member/{{ member.id }}/">{{ member.first_name }} {{ member.last_name }}</a></li>
+			<td>{{ member.id }}</td>
+	        <td><a href="/member/{{ member.id }}/">{{ member.first_name }} {{ member.last_name }}</a></td>
+	        <td><a href="/payment/member/{{ member.id }}/">link</a></td>
+	</tr>
 	    {% endfor %}
-	    </ul>
+	 
+	</tbody>
+</table>
 	{% else %}
 	    <p>No members are available.</p>
 	{% endif %}

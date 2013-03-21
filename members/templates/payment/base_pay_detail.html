@@ -5,12 +5,12 @@
 {% block content %}
 <h1>{{ member.first_name }} {{ member.last_name }}</h1>
 
-<h3>Payment Breakdown</h3>
+<h3>Payment Breakdown : Reference {{ payment.id }}</h3>
 <table>
   <tbody>
     <tr>
       <td>Name : </td>
-      <td>{{ payment.member }}</td>
+      <td><a href="/payment/member/{{ payment.member.id }}/">{{ payment.member }}</a></td>
       <td>Membership : </td>
       <td>{{ payment.member.membership_type }}</td>
     </tr>

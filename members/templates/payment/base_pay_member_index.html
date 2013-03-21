@@ -3,18 +3,25 @@
 {% block title %}List of Payments{% endblock %}
 
 {% block content %}
-	<h2>List of Payments</h2>
 	{% if member_payment_list %}
+
+	{% with member_payment_list|first as name %}
+  		<h2>List of Payments for {{ name }}</h2>
+	{% endwith %}
 <table>
   <tbody>
+	<th>Reference</th>
   	<th>Payment Date</th>
   	<th>Name</th>
   	<th>Amount</th>
+  	<th>Type</th>
     <tr>
 	    {% for payment in member_payment_list %}
-			<td><a href="/payment/{{ payment.id }}/">{{ payment.payment_date }}</a></td>
-	        <td>{{ payment.member }}</td>
+			<td><a href="/payment/{{ payment.id }}/">{{ payment.id }}</a></td>
+			<td>{{ payment.payment_date }}</td>
+	        <td><a href="/payment/member/{{ payment.member.id }}/">{{ payment.member }}</a></td>
 	        <td>{{ payment.amount }}</a></td>
+	        <td>{{ payment.get_payment_type_display }}</a></td>
 	</tr>
 	    {% endfor %}
  </tbody>

@@ -5,30 +5,29 @@ body {
 	color: black ;
 }
 
-
-table.red
+table
 {
-	text-align:center;
+	box-shadow: 5px 5px 5px #888888; 
 }
 
 table
 {
-	box-shadow: 5px 5px 5px #888888;
 	border-collapse:collapse;
 	border: 1px solid black;
 }
 
 
+
 td:nth-child(odd) {
 	padding-right:5px;
 	text-align:right;
-	width:200px;
+	width:160px;
 	font-weight:bold;
 }
 
 td:nth-child(even) {
 	padding-left:5px;
 	text-align:left;
-	width:200px;
+	width:250px;
 }
 

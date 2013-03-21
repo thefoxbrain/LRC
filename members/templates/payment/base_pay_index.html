@@ -5,7 +5,7 @@
 {% block content %}
 	<h2>List of Payments</h2>
 	{% if latest_payment_list %}
-<table>
+<table border="1" align="center" >
   <tbody>
   	<th>Reference</th>
   	<th>Payment Date</th>
@@ -13,9 +13,9 @@
   	<th>Amount</th>
     <tr>
 	    {% for payment in latest_payment_list %}
-			<td>{{ payment.id }}</td>
-			<td><a href="/payment/{{ payment.id }}/">{{ payment.payment_date }}</a></td>
-	        <td>{{ payment.member }}</td>
+			<td><a href="/payment/{{ payment.id }}/">{{ payment.id }}</a></td>
+			<td>{{ payment.payment_date }}</a></td>
+			<td><a href="/payment/member/{{ payment.member.id }}/">{{ payment.member }}</a></td>
 	        <td>{{ payment.amount }}</a></td>
 	</tr>
 	    {% endfor %}

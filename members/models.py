@@ -107,4 +107,4 @@ class Payment(models.Model):
     payment_type = models.CharField(max_length=1, choices=PAYMENTTYPE_CHOICES,blank=True)
     
     def __unicode__(self):
-        return u'%s %s %s' % (self.member, self.amount, self.payment_date)
+        return u'%s' % (self.member)
