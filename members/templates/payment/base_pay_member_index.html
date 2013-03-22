@@ -5,21 +5,26 @@
 {% block content %}
 	{% if member_payment_list %}
 
-	{% with member_payment_list|first as name %}
-  		<h2>List of Payments for {{ name }}</h2>
+<!--	{% with member_payment_list|first as name %}
+  		<h2>List of Payments for <a href="/member/{{ member.id }}/">{{ name }}</a></h2>
 	{% endwith %}
+-->
+{% for payment in member_payment_list %}
+   {% if forloop.first %}
+    <h2>List of Payments for <a href="/member/{{ payment.member.id }}/">{{ payment.member.first_name }} {{ payment.member.last_name }}</a></h2>
+    {% endif %}	    
+{% endfor %}    
+
 <table>
   <tbody>
 	<th>Reference</th>
   	<th>Payment Date</th>
-  	<th>Name</th>
   	<th>Amount</th>
   	<th>Type</th>
     <tr>
 	    {% for payment in member_payment_list %}
 			<td><a href="/payment/{{ payment.id }}/">{{ payment.id }}</a></td>
 			<td>{{ payment.payment_date }}</td>
-	        <td><a href="/payment/member/{{ payment.member.id }}/">{{ payment.member }}</a></td>
 	        <td>{{ payment.amount }}</a></td>
 	        <td>{{ payment.get_payment_type_display }}</a></td>
 	</tr>

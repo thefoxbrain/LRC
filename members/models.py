@@ -1,6 +1,7 @@
 from datetime import date
 # from PIL import Image
 from django.db import models
+from django.forms import ModelForm
 
 
 class MembershipType(models.Model):
@@ -108,3 +109,8 @@ class Payment(models.Model):
     
     def __unicode__(self):
         return u'%s' % (self.member)
+    
+class PaymentForm(ModelForm):
+    class Meta:
+        model = Payment
+            

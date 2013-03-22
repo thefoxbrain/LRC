@@ -9,15 +9,18 @@
   <tbody>
   	<th>Reference</th>
   	<th>Payment Date</th>
-  	<th>Name</th>
+  	<th>Nember</th>
   	<th>Amount</th>
+  	<th>Payment History</th>
+  	<th></th>
     <tr>
 	    {% for payment in latest_payment_list %}
 			<td><a href="/payment/{{ payment.id }}/">{{ payment.id }}</a></td>
 			<td>{{ payment.payment_date }}</a></td>
-			<td><a href="/payment/member/{{ payment.member.id }}/">{{ payment.member }}</a></td>
-	        <td>{{ payment.amount }}</a></td>
-	</tr>
+			<td><a href="/member/{{ payment.member.id }}/">{{ payment.member.first_name }} {{ payment.member.last_name }}</a></td>
+			<td>{{ payment.amount }}</a></td>
+			<td><a href="/payment/member/{{ payment.member.id }}/">link</a></td>
+	        	</tr>
 	    {% endfor %}
  </tbody>
 </table>

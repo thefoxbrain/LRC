@@ -5,6 +5,8 @@ urlpatterns = patterns('payment.views',
     (r'^$', 'pay_index'),
     # ex: /members/5/
     (r'^(?P<payment_id>\d+)/$', 'pay_detail'),    
+    # manage
+    (r'^manage/$', 'pay_manage'),
     # ex: /members/5/
     (r'^member/(?P<member_id>\w+)/$', 'pay_member_index'),
 )
