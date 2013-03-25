@@ -1,7 +1,6 @@
-from django.shortcuts import render, get_object_or_404,render_to_response
-from django.forms.models import modelformset_factory
+from django.shortcuts import render, get_object_or_404, redirect
 
-from members.models import Payment
+from members.models import Payment,PaymentForm
 
 def pay_index(request):
     latest_payment_list = Payment.objects.all().order_by('-id')
@@ -16,15 +15,12 @@ def pay_detail(request, payment_id):
     payment = get_object_or_404(Payment, pk=payment_id)
     return render(request, 'payment/base_pay_detail.html', {'payment': payment})
 
-def pay_manage(request):
-    PaymentFormSet = modelformset_factory(Payment)
-    if request.method == 'POST':
-        formset = PaymentFormSet(request.POST, request.FILES)
-        if formset.is_valid():
-            formset.save()
-            # do something.
-    else:
-        formset = PaymentFormSet()
-    return render_to_response("payment/base_pay_manage.html", {
-        "formset": formset,
-    })
+
+def create_payment(request):
+    form = PaymentForm(request.POST or None)
+    if form.is_valid():
+        # obj = form.save(commit=False)
+        # Add the owner of the record for access control
+        form.save()
+        return redirect('/payment/')
+    return render(request, 'payment/base_pay_manage.html', {'form':form})
