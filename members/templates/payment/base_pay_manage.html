@@ -4,10 +4,26 @@
 
 {% block content %}
 
-<form method="post" action="">
-	{% csrf_token %}
-    {{ form.as_p }}
-     <input type="submit" value="Submit">
+
+
+<form action="" method="post">{% csrf_token %}
+    {{ form.non_field_errors }}
+    <div class="fieldWrapper">
+        {{ form.member.errors }}
+        <label for="id_member">Member:</label>
+        {{ form.member }}
+    </div>
+    <div class="fieldWrapper">
+        {{ form.payment_note.errors }}
+        <label for="id_payment_note">Note:</label>
+        {{ form.payment_note }}
+    </div>
+    <div class="fieldWrapper">
+        {{ form.payment_date.errors }}
+        <label for="id_payment_date">Date:</label>
+        {{ form.payment_date }}
+    </div>    
+    <p><input type="submit" value="Submit" /></p>
 </form>
 
 {% endblock %}

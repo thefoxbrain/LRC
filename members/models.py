@@ -112,5 +112,4 @@ class Payment(models.Model):
     
 class PaymentForm(ModelForm):
     class Meta:
-        model = Payment
-            
+        model = Payment            

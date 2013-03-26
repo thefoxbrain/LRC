@@ -21,12 +21,14 @@
   	<th>Payment Date</th>
   	<th>Amount</th>
   	<th>Type</th>
+  	<th>Edit</th>
     <tr>
 	    {% for payment in member_payment_list %}
 			<td><a href="/payment/{{ payment.id }}/">{{ payment.id }}</a></td>
 			<td>{{ payment.payment_date }}</td>
 	        <td>{{ payment.amount }}</a></td>
 	        <td>{{ payment.get_payment_type_display }}</a></td>
+	        <td><a href="/payment/manage/{{ payment.id }}/">link</a></td>
 	</tr>
 	    {% endfor %}
  </tbody>

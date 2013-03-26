@@ -1,8 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}screen.css" />
-    <title>{% block title %}My amazing site{% endblock %}</title>
+	<title>{% block title %}My amazing site{% endblock %}</title>
+	<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}screen.css" />
+	
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" />
+	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+	<script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
+	
+	<script>
+		$(function() {
+		$( "#id_payment_date" ).datepicker({ dateFormat: "dd/mm/yy" });
+		});
+	</script>	
+	
+	
 </head>
 
 <body>
@@ -11,6 +23,7 @@
             <li><a href="/admin/">Admin</a></li>
             <li><a href="/member/">Members</a></li>
             <li><a href="/payment/">Payments</a></li>
+            <li><a href="/payment/manage/">Add Payment</a></li>
         </ul>
     </div>	
     
