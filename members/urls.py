@@ -5,4 +5,6 @@ urlpatterns = patterns('members.views',
     (r'^$', 'index'),
     # ex: /members/5/
     (r'^(?P<member_id>\d+)/$', 'detail'),    
+        
+    (r'^membership/(?P<membership_id>\w+)/$', 'membership_index'),
 )

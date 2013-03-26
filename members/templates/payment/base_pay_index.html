@@ -18,7 +18,7 @@
 			<td><a href="/payment/{{ payment.id }}/">{{ payment.id }}</a></td>
 			<td>{{ payment.payment_date }}</a></td>
 			<td><a href="/member/{{ payment.member.id }}/">{{ payment.member.first_name }} {{ payment.member.last_name }}</a></td>
-			<td>{{ payment.amount }}</a></td>
+			<td>{{ payment.amount }}</td>
 			<td><a href="/payment/member/{{ payment.member.id }}/">link</a></td>
 	        	</tr>
 	    {% endfor %}

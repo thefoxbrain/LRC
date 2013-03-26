@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}Payment Detail{% endblock %}
+
+{% block content %}
+<h3>Membership Type : {{ membership.name }}</h3>
+
+<br>  
+
+<table>
+  <tbody>
+    <tr>
+      <td>Name : </td>
+      <td>{{ membership.name }}</td>
+      <td>Description :</td>
+      <td>{{ membership.description }}</td>
+    </tr>
+    <tr>
+      <td>Cost : </td>
+      <td>{{ membership.cost }}</td>
+      <td></td>
+      <td></td>      
+    </tr>
+  </table>
+  
+<br>
+<br>
+<br>
+{% endblock %}

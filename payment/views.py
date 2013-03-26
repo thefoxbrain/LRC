@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect,HttpResponseRedirect
 
-from members.models import Payment,PaymentForm
+from payment.models import Payment,PaymentForm
 
 def pay_index(request):
     latest_payment_list = Payment.objects.all().order_by('-id')
@@ -30,6 +30,7 @@ def pay_edit(request, payment_id):
     if request.method == 'POST':
         form = PaymentForm(request.POST, instance=pay)
         if form.is_valid():
+            form.save()
             return redirect('/payment/')
         else:
             print form.errors
@@ -37,23 +38,3 @@ def pay_edit(request, payment_id):
         # create unbound form to display in template
         form = PaymentForm(instance=pay)
     return render(request, 'payment/base_pay_manage.html', {'form':form})
-
-
-"""
-def update_notification_preference(request, object_id):
-    np = get_object_or_404(NotificationPreference, pk=object_id)
-    if request.method == 'POST':
-        form = NotificationPreferenceForm(request.POST, instance=np)
-        if form.is_valid():
-            obj = form.save(commit=False)
-            # Add the owner of the record for access control
-            obj.owner = request.user.email
-            form.save()
-            return redirect('/notification_preference/list')
-        else:
-            print form.errors
-    else:
-        # create unbound form to display in template
-        form = NotificationPreferenceForm(instance=np)
-    return render(request, 'notification_preference/save.html', {'np': np, 'form':form,'notification_preference':NotificationPreference})
-"""

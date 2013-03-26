@@ -23,6 +23,11 @@
         <label for="id_payment_date">Date:</label>
         {{ form.payment_date }}
     </div>    
+    <div class="fieldWrapper">
+        {{ form.amount.errors }}
+        <label for="id_amount">Amount:</label>
+        {{ form.amount }}
+    </div>       
     <p><input type="submit" value="Submit" /></p>
 </form>
 

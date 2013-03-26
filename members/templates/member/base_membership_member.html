@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}List of Payments{% endblock %}
+
+{% block content %}
+	{% if membership_list %}
+	
+{% for  member in membership_list %}
+   {% if forloop.first %}
+    <h2>List of <a href="/membership/{{ member.membership_type.id }}/">{{ member.membership_type.name }}</a> Members</h2>
+    {% endif %}	    
+{% endfor %}   	
+
+<table>
+  <tbody>
+	<th>Reference</th>
+  	<th>Payment Date</th>
+  	<th>Amount</th>
+  	<th>Type</th>
+  	<th>Edit</th>
+    <tr>
+	    {% for member in membership_list %}
+	    	<td>{{ member.first_name }}</td>
+			<td>{{ member.membership_type.cost }}</td>
+	        <td><a href="/payment/manage/{{ payment.id }}/">link</a></td>
+	</tr>
+	    {% endfor %}
+ </tbody>
+</table>
+	{% else %}
+	    <p>No payments are available.</p>
+	{% endif %}
+{% endblock %}

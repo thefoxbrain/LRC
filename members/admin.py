@@ -4,7 +4,7 @@ from django.contrib import admin
 
 from members.models import Member
 from members.models import MembershipType
-from members.models import Payment
+from payment.models import Payment
 
 class PaymentInline(admin.TabularInline):
     model = Payment

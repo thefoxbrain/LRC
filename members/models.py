@@ -1,20 +1,8 @@
 from datetime import date
 # from PIL import Image
 from django.db import models
-from django.forms import ModelForm
 
-
-class MembershipType(models.Model):
-    name = models.CharField(max_length=200)
-    description = models.CharField(max_length=200,  blank=True)
-    cost = models.IntegerField(default=0)
-    list_display = ('name', 'description')
-    
-    def __unicode__(self):
-        return self.name
-        
-    class Meta:
-        ordering = ['name']
+from membership.models import MembershipType
     
 class Member(models.Model):
     # Personal Information
@@ -94,22 +82,3 @@ class Member(models.Model):
     def __unicode__(self):
         return u'%s %s' % (self.first_name, self.last_name)
     
-class Payment(models.Model):
-    member = models.ForeignKey(Member)
-    payment_note = models.CharField(max_length=200)
-    amount = models.CharField(max_length=200,  blank=True, verbose_name='Amount')
-    payment_date = models.DateField()
-    PAYMENTTYPE_CHOICES = (
-        ('S', 'Standing Order'),
-        ('Q', 'Cheque'),
-        ('C', 'Cash'),
-        ('B', 'Bank Transfer'),
-    )
-    payment_type = models.CharField(max_length=1, choices=PAYMENTTYPE_CHOICES,blank=True)
-    
-    def __unicode__(self):
-        return u'%s' % (self.member)
-    
-class PaymentForm(ModelForm):
-    class Meta:
-        model = Payment            
