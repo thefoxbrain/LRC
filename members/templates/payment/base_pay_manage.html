@@ -28,6 +28,11 @@
         <label for="id_amount">Amount:</label>
         {{ form.amount }}
     </div>       
+    <div class="fieldWrapper">
+        {{ form.payment_type.errors }}
+        <label for="id_payment_type">payment_type:</label>
+        {{ form.payment_type }}
+    </div>      
     <p><input type="submit" value="Submit" /></p>
 </form>
 

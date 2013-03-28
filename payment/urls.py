@@ -1,4 +1,5 @@
 from django.conf.urls import patterns
+from payment.models import Payment
 
 urlpatterns = patterns('payment.views',
     # ex: /members/
@@ -11,4 +12,6 @@ urlpatterns = patterns('payment.views',
     (r'^manage/(?P<payment_id>\d+)/$', 'pay_edit'),
     # ex: /members/5/
     (r'^member/(?P<member_id>\w+)/$', 'pay_member_index'),
+    
+    (r'^delete/(?P<payment_id>\d+)/?$', 'pay_delete'), 
 )

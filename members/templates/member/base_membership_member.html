@@ -11,18 +11,14 @@
     {% endif %}	    
 {% endfor %}   	
 
-<table>
+<table class="simple_table">
   <tbody>
-	<th>Reference</th>
-  	<th>Payment Date</th>
-  	<th>Amount</th>
-  	<th>Type</th>
-  	<th>Edit</th>
+	<th>Name</th>
+  	<th>Start Date</th>
     <tr>
 	    {% for member in membership_list %}
-	    	<td>{{ member.first_name }}</td>
-			<td>{{ member.membership_type.cost }}</td>
-	        <td><a href="/payment/manage/{{ payment.id }}/">link</a></td>
+	    	<td><a href="/member/{{ member.id }}/">{{ member.first_name }} {{ member.last_name }}</td>
+			<td>{{ member.start_date }}</td>
 	</tr>
 	    {% endfor %}
  </tbody>

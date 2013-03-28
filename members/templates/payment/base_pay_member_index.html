@@ -3,6 +3,7 @@
 {% block title %}List of Payments{% endblock %}
 
 {% block content %}
+asdfsafd
 	{% if member_payment_list %}
 
 <!--	{% with member_payment_list|first as name %}
@@ -15,13 +16,15 @@
     {% endif %}	    
 {% endfor %}    
 
-<table>
+
+<table class="simple_table">
   <tbody>
 	<th>Reference</th>
   	<th>Payment Date</th>
   	<th>Amount</th>
   	<th>Type</th>
   	<th>Edit</th>
+  	<th>Delete</th>
     <tr>
 	    {% for payment in member_payment_list %}
 			<td><a href="/payment/{{ payment.id }}/">{{ payment.id }}</a></td>
@@ -29,6 +32,7 @@
 	        <td>{{ payment.amount }}</a></td>
 	        <td>{{ payment.get_payment_type_display }}</a></td>
 	        <td><a href="/payment/manage/{{ payment.id }}/">link</a></td>
+	        <td><a href="/payment/delete/{{ payment.id }}/">link</a></td>
 	</tr>
 	    {% endfor %}
  </tbody>
@@ -36,4 +40,8 @@
 	{% else %}
 	    <p>No payments are available.</p>
 	{% endif %}
+
+
+
 {% endblock %}
+
