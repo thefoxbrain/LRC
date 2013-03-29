@@ -2,9 +2,9 @@ from django.conf.urls import patterns
 
 urlpatterns = patterns('members.views',
     # ex: /members/
-    (r'^$', 'index'),
+    (r'^$', 'member_index'),
     # ex: /members/5/
-    (r'^(?P<member_id>\d+)/$', 'detail'),    
+    (r'^(?P<member_id>\d+)/$', 'member_detail'),    
         
-    (r'^membership/(?P<membership_id>\w+)/$', 'membership_index'),
+    (r'^membership/(?P<membership_id>\w+)/$', 'member_membership_index'),
 )

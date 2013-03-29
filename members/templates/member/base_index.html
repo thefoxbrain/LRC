@@ -1,11 +1,16 @@
 {% extends "base.html" %}
 
+{% load render_table from django_tables2 %}
+
 {% block title %}List of Members{% endblock %}
 
 {% block content %}
 	<h2>List of Members</h2>
-	{% if latest_member_list %}
-<table class="simple_table">
+	{% if member_list %}
+
+{% render_table member_list %}	
+
+<table class="table_center">
   <tbody>
   	<th>Reference</th>
   	<th>Name</th>

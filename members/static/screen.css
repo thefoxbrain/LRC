@@ -1,15 +1,20 @@
 body {
 	width: 960px;
+	height: 800px;
 	margin: 0 auto;	
 	font-family:arial;
 	color: black ;
 }
 
-#menu ul{
+h3 {
+	text-align:center;
+}
+
+ul{
   list-style: none;
 }
 
-#menu li{
+li{
   display: inline;
 }
 
@@ -18,9 +23,31 @@ li {
 	font-weight:bold;
 }
 
+#menu {
+	height:20px;
+	border-radius: 15px;
+	background-color:#99D2EF;
+	xpadding-top:1px;
+	padding-bottom:10px;
+}
+
+#content {
+	height: 600px;
+	xpadding-top:1px;
+	border-radius: 15px;
+	xbackground-image: -moz-linear-gradient(bottom, #FFFFFF 0%, #99D2EF 100%);
+}
+
+#footer {
+	xbackground-image: -moz-linear-gradient(top, #FFFFFF 0%, #99D2EF 100%);
+	border-radius: 15px;
+}
+
+
 table
 {
-	xbox-shadow: 5px 5px 5px #888888;
+	margin-left:auto; 
+    margin-right:auto;
 	xborder-collapse:collapse;
 	xborder: 1px solid black;
 }
@@ -43,7 +70,12 @@ td:nth-child(even) {
 	width:200px;
 }
 
-
-.simple_table td {
+.table_center td{
     text-align:center;
+    width:150px;
+}
+
+.table_auto td {
+    text-align:center;
+    width:30px;
 }

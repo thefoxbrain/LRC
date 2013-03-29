@@ -3,6 +3,7 @@
 <head>
 	<title>{% block title %}My amazing site{% endblock %}</title>
 	<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}screen.css" />
+	<link rel="stylesheet" href="{{ STATIC_URL }}django_tables2/themes/paleblue/css/screen.css" />
 	
 	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" />
 	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
@@ -14,12 +15,23 @@
 		});
 	</script>	
 	
-	 <script>
+	<script>
 		$(function() {
 		$( "#tabs" ).tabs({ heightStyle: "auto" });
-	});
-</script>
-	
+		});
+	</script>
+
+ 	<script>
+		$(function() {
+		$( document ).tooltip();
+		});
+	</script>
+	<style>
+	label {
+		display: inline-block;
+		width: 5em;
+		}
+	</style>
 	
 </head>
 
@@ -31,14 +43,27 @@
             <li><a href="/member/">Members</a></li>
             <li><a href="/payment/">Payments</a></li>
             <li><a href="/payment/manage/">Add Payment</a></li>
+            <li><a href="">Bank Details</a></li>
+            <li><a href="">Maintenance</a></li>
+            <li><a href="">Equipment</a></li>
         </ul>
     </div>	
     
     <div id="content">
-        {% block content %}{% endblock %}
+        {% block content %}{% endblock content%}
     </div>
     
-
+    <div id="footer">
+        <ul>
+            <li><a href="/admin/">Admin</a></li>
+            <li><a href="/membership/">Membership</a></li>
+            <li><a href="/member/">Members</a></li>
+            <li><a href="/payment/">Payments</a></li>
+            <li><a href="/payment/manage/">Add Payment</a></li>
+        </ul>
+    </div>	
+		
+	</div>
 
 </body>
 </html>

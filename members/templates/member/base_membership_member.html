@@ -7,7 +7,7 @@
 	
 {% for  member in membership_list %}
    {% if forloop.first %}
-    <h2>List of <a href="/membership/{{ member.membership_type.id }}/">{{ member.membership_type.name }}</a> Members</h2>
+    <h2>List of <a href="/member/membership/{{ member.membership_type.id }}/">{{ member.membership_type.name }}</a> Members</h2>
     {% endif %}	    
 {% endfor %}   	
 

@@ -5,7 +5,7 @@
 {% block content %}
 	<h2>List of Payments</h2>
 	{% if latest_payment_list %}
-<table class="simple_table" >
+<table class="table_center">
   <tbody>
   	<th>Reference</th>
   	<th>Payment Date</th>
@@ -21,9 +21,9 @@
 			<td>{{ payment.payment_date }}</a></td>
 			<td><a href="/member/{{ payment.member.id }}/">{{ payment.member.first_name }} {{ payment.member.last_name }}</a></td>
 			<td>{{ payment.amount }}</td>
-			<td><a href="/payment/member/{{ payment.member.id }}/"><img src="{{ STATIC_URL }}history.png" alt="Payment History"></a></td>
-			<td><a href="/payment/manage/{{ payment.id }}/"><img src="{{ STATIC_URL }}edit.png" alt="Edit"></a></td>
-			<td><a href="/payment/delete/{{ payment.id }}/"><img src="{{ STATIC_URL }}delete.png" alt="Delete"></a></td>
+			<td style="width:32px"><a href="/payment/member/{{ payment.member.id }}/" title="Payment History"><img src="{{ STATIC_URL }}history.png" alt="Payment History" width=24 length=24></a></td>
+			<td style="width:32px"><a href="/payment/manage/{{ payment.id }}/" title="Edit"><img src="{{ STATIC_URL }}edit.png" alt="Edit" width=24 length=24></a></td>
+			<td style="width:32px"><a href="/payment/delete/{{ payment.id }}/" title="Delete"><img src="{{ STATIC_URL }}delete.png" alt="Delete" width=24 length=24></a></td>
 	        	</tr>
 	    {% endfor %}
  </tbody>

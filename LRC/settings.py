@@ -132,9 +132,11 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
+    'django_tables2',
     'members',
     'payment',
     'membership',
+    'crispy_forms',
 )
 
 # A sample logging configuration. The only tangible logging
@@ -173,8 +175,10 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.media",
     "django.core.context_processors.static",
     "django.contrib.messages.context_processors.messages",
-    "django.core.context_processors.request"
+    "django.core.context_processors.request",
 )
+
+CRISPY_TEMPLATE_PACK = 'bootstrap'
 
 DATETIME_FORMAT = (
     '%d/%m/%Y',                 
