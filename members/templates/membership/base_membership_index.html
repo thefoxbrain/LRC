@@ -6,6 +6,8 @@
 
 {% block content %}
 	<h2>List of Membership Types</h2>
+	
+	<div class="table">
 	{% if membership_list %}
 	
 	{% render_table membership_list %}	
@@ -13,4 +15,5 @@
 	{% else %}
 	    <p>No payments are available.</p>
 	{% endif %}
+	</div>
 {% endblock %}

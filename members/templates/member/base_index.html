@@ -10,21 +10,6 @@
 
 {% render_table member_list %}	
 
-<table class="table_center">
-  <tbody>
-  	<th>Reference</th>
-  	<th>Name</th>
-  	<th>Payments</th>
-    <tr>
-	    {% for member in latest_member_list %}
-			<td>{{ member.id }}</td>
-	        <td><a href="/member/{{ member.id }}/">{{ member.first_name }} {{ member.last_name }}</a></td>
-	        <td><a href="/payment/member/{{ member.id }}/">link</a></td>
-	</tr>
-	    {% endfor %}
-	 
-	</tbody>
-</table>
 	{% else %}
 	    <p>No members are available.</p>
 	{% endif %}

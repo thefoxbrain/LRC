@@ -1,29 +1,19 @@
 {% extends "base.html" %}
 
-{% block title %}List of Payments{% endblock %}
+{% load render_table from django_tables2 %}
+
+{% block title %}List of Members{% endblock %}
 
 {% block content %}
+
+	<h2>List of Members</h2>
 	{% if membership_list %}
 	
-{% for  member in membership_list %}
-   {% if forloop.first %}
-    <h2>List of <a href="/member/membership/{{ member.membership_type.id }}/">{{ member.membership_type.name }}</a> Members</h2>
-    {% endif %}	    
-{% endfor %}   	
+	
 
-<table class="simple_table">
-  <tbody>
-	<th>Name</th>
-  	<th>Start Date</th>
-    <tr>
-	    {% for member in membership_list %}
-	    	<td><a href="/member/{{ member.id }}/">{{ member.first_name }} {{ member.last_name }}</td>
-			<td>{{ member.start_date }}</td>
-	</tr>
-	    {% endfor %}
- </tbody>
-</table>
+	{% render_table membership_list %}	
+
 	{% else %}
-	    <p>No payments are available.</p>
+	    <p>No members are available.</p>
 	{% endif %}
 {% endblock %}

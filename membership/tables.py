@@ -4,8 +4,9 @@ from django_tables2.utils import A
 from membership.models import MembershipType
 
 class MembershipTable(tables.Table):
-    name = tables.LinkColumn('members.views.member_membership_index', args=[A('id')])
+    name = tables.LinkColumn('members.views.member_membership_index', args=[A('id')],orderable=False)
     cost = tables.Column(order_by=("-cost"))
+    description = tables.Column(orderable=False)
 
     
     class Meta:
