@@ -6,9 +6,9 @@ from members.models import Member
 from members.tables import MemberTable
 
 def member_index(request):
-    member_list = MemberTable(Member.objects.all())
-    RequestConfig(request, paginate={"per_page": 5}).configure(member_list)
-    return render(request, 'member/base_index.html', {'member_list': member_list})
+    member_index = Member.objects.all().order_by('-start_date')[:5]
+    context = {'member_index': member_index}
+    return render(request, 'member/base_index.html', context)
 
 def member_detail(request, member_id):
     member = get_object_or_404(Member, pk=member_id)

@@ -5,15 +5,25 @@
 {% block title %}List of Payments{% endblock %}
 
 {% block content %}
-	<h2>List of Membership Types</h2>
-	
-	<div class="table">
-	{% if membership_list %}
-	
-	{% render_table membership_list %}	
-
-	{% else %}
-	    <p>No payments are available.</p>
-	{% endif %}
-	</div>
+<h2>List of Membership Types</h2>
+{% if membership_list %}
+<table class="table table-hover">
+	<tr>
+		<th>Name</th>
+		<th>Description</th>
+		<th>Cost</th>
+		<th>Members</th>
+	</tr>
+{% for membership in membership_list %}
+	<tr>
+		<td>{{ membership.name }}</a></td>
+		<td>{{ membership.description }}</a></td>
+		<td>{{ membership.cost }}</a></td>
+		<td><a href="/member/membership/{{ membership.id }}/"><img src="{{ STATIC_URL }}/people.png"></a></td>
+</tr>
+{% endfor %}
+ </table>
+{% else %}
+<p>No payments are available.</p>
+{% endif %}
 {% endblock %}
