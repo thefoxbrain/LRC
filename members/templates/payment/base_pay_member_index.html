@@ -1,17 +1,44 @@
 {% extends "base.html" %}
 
-{% load render_table from django_tables2 %}
+{% block active_payments %}active{% endblock %}
 
 {% block title %}List of Payments{% endblock %}
 
 {% block content %}
-	<h2>List of Payments</h2>
-	
-	{% if member_payment_list %}
-		{% render_table member_payment_list %}	
-	{% else %}
-	    <p>No payments are available.</p>
-	{% endif %}
+
+{% if member_payment_list %}
+
+{% for payment in member_payment_list %}
+   {% if forloop.first %}
+    <h3>Payments for <a href="/member/{{ payment.member.id }}/">{{ payment.member.first_name }} {{ payment.member.last_name }}</a></h3>
+    {% endif %}
+{% endfor %}
+
+
+<table class="table table-hover">
+  <tbody>
+	<tr>
+		<th>Payment Date</th>
+		<th>Amount</th>
+		<th>Type</th>
+		<th>Edit</th>
+		<th>Delete</th>
+	</tr>
+{% for payment in member_payment_list %}
+    <tr>
+		<td>{{ payment.payment_date }}</td>
+		<td>{{ payment.amount }}</a></td>
+		<td>{{ payment.get_payment_type_display }}</a></td>
+		<td><a href="/payment/manage/{{ payment.id }}/"><img src="{{ STATIC_URL }}edit.png" alt="Edit" width="24" length="24"></a></td>
+		<td><a href="/payment/delete/{{ payment.id }}/"><img src="{{ STATIC_URL }}delete.png" alt="Edit" width="24" length="24"></a></td>
+	</tr>
+{% endfor %}
+ </tbody>
+</table>
+{% else %}
+<p>No payments are available.</p>
+{% endif %}
+
+
 
 {% endblock %}
-

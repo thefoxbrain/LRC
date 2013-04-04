@@ -1,9 +1,11 @@
 {% extends "base.html" %}
 
+
+
 {% block title %}Member Detail{% endblock %}
 
 {% block content %}
-<h1>{{ member.first_name }} {{ member.last_name }}</h1>
+<h3>{{ member.first_name }} {{ member.last_name }}</h3>
 
 <table>
   <tbody>
@@ -52,17 +54,18 @@
 
 <br>
 
-<div id="tabs">
-<ul>
-	<li><a href="#tabs-1">Address</a></li>
-	<li><a href="#tabs-2">Emergency</a></li>
-	<li><a href="#tabs-3">Rowing</a></li>
-	<li><a href="#tabs-4">Swimming Ability</a></li>
-	<li><a href="#tabs-5">Health Questionnaire</a></li>
+<div class="tabbable">
+<ul class="nav nav-tabs">
+	<li class="active"><a href="#tab1" data-toggle="tab">Address</a></li>
+	<li><a href="#tab2" data-toggle="tab">Emergency</a></li>
+	<li><a href="#tab3" data-toggle="tab">Rowing</a></li>
+	<li><a href="#tab4" data-toggle="tab">Swimming Ability</a></li>
+	<li><a href="#tab5" data-toggle="tab">Health Questionnaire</a></li>
 </ul>
 
 <!-- Address -->
-<div id="tabs-1">
+<div class="tab-content">
+<div class="tab-pane active" id="tab1">
 <table>
   <tbody>
     <tr>
@@ -101,7 +104,7 @@
 </div>
 
 <!-- Emergency Contact Details -->
-<div id="tabs-2">
+<div class="tab-pane" id="tab2">
 
 <table>
   <tbody>
@@ -123,7 +126,7 @@
 </div>
 
 <!--Rowing Membership -->
-<div id="tabs-3">
+<div class="tab-pane" id="tab3">
 
 <table>
   <tbody>
@@ -145,7 +148,7 @@
 </div>
 
 <!-- Swimming Ability -->
-<div id="tabs-4">
+<div class="tab-pane" id="tab4">
 <table>
   <tbody>
     <tr>
@@ -165,7 +168,7 @@
   
 </div>  
   
-  <div id="tabs-5">
+<div class="tab-pane" id="tab5">
   
 <!-- Health Questionnaire-->
 	<table>
@@ -227,9 +230,7 @@
 
 </div>
 
-
-    asdf
-        {% block payment %}{% endblock payment%}
+</div>
 
 {% endblock content%}		
 

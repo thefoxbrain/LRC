@@ -1,25 +1,25 @@
 {% extends "base.html" %}
 
-{% load render_table from django_tables2 %}
+{% block active_membership %}active{% endblock %}
 
 {% block title %}List of Payments{% endblock %}
 
 {% block content %}
-<h2>List of Membership Types</h2>
+
+
+<h3>Membership Types</h3>
 {% if membership_list %}
 <table class="table table-hover">
 	<tr>
 		<th>Name</th>
-		<th>Description</th>
 		<th>Cost</th>
 		<th>Members</th>
 	</tr>
 {% for membership in membership_list %}
 	<tr>
-		<td>{{ membership.name }}</a></td>
-		<td>{{ membership.description }}</a></td>
-		<td>{{ membership.cost }}</a></td>
-		<td><a href="/member/membership/{{ membership.id }}/"><img src="{{ STATIC_URL }}/people.png"></a></td>
+		<td>{{ membership.name }}</td>
+		<td>{{ membership.cost }}</td>
+		<td><a href="/member/membership/{{ membership.id }}/"><img src="{{ STATIC_URL }}people.png" alt="Payment History" width="24" length="24"></a></td>
 </tr>
 {% endfor %}
  </table>

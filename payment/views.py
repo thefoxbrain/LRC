@@ -1,18 +1,14 @@
-from django.shortcuts import render, get_object_or_404, redirect,HttpResponseRedirect
-
-from django_tables2 import RequestConfig
+from django.shortcuts import render, get_object_or_404, redirect
 
 from payment.models import Payment,PaymentForm
-from payment.tables import PaymentTable
 
 def pay_index(request):
-    payment_list = PaymentTable(Payment.objects.all())
-    RequestConfig(request, paginate={"per_page": 5}).configure(payment_list)
-    return render(request, 'payment/base_pay_index.html', {'payment_list': payment_list})
+    payment_list = Payment.objects.all().order_by('-id')
+    context = {'payment_list': payment_list}
+    return render(request, 'payment/base_pay_index.html', context)
 
 def pay_member_index(request, member_id):
-    member_payment_list = PaymentTable(Payment.objects.filter(member__id__exact = member_id).order_by('-id'))
-    RequestConfig(request, paginate={"per_page": 5}).configure(member_payment_list)
+    member_payment_list = Payment.objects.filter(member__id__exact = member_id).order_by('-payment_date')
     return render(request,'payment/base_pay_member_index.html', {'member_payment_list': member_payment_list })
 
 def pay_detail(request, payment_id):
