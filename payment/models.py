@@ -1,3 +1,4 @@
+import datetime
 from django.db import models
 from django.forms import ModelForm
 from django import forms
@@ -7,10 +8,10 @@ from members.models import Member
 
 
 class Payment(models.Model):
-    member = models.ForeignKey(Member)
+    member = models.ForeignKey(Member, related_name="members")
     payment_note = models.CharField(max_length=200,blank=True)
     amount = models.CharField(max_length=200, verbose_name='Amount')
-    payment_date = models.DateField()
+    payment_date = models.DateField(default=datetime.datetime.now)
     PAYMENTTYPE_CHOICES = (
         ('S', 'Standing Order'),
         ('Q', 'Cheque'),
@@ -31,10 +32,10 @@ class PaymentForm(ModelForm):
         
     def __init__(self, *args, **kwargs):
         super(PaymentForm, self).__init__(*args, **kwargs) # Call to ModelForm constructor
-        self.fields['payment_note'].widget.attrs['rows'] = 5
+        self.fields['payment_note'].widget.attrs['rows'] = 2
         self.fields['payment_note']        
         
 class PaymentFilter(django_filters.FilterSet):
     class Meta:
         model = Payment
-        fields = ['payment_date', 'member', 'payment_type']        
+        fields = ['payment_date', 'member', 'payment_type']     

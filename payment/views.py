@@ -1,10 +1,11 @@
-from django.shortcuts import render, get_object_or_404, redirect,render_to_response
+from django.shortcuts import render, get_object_or_404, redirect,render_to_response,RequestContext
 
 from payment.models import Payment,PaymentForm,PaymentFilter
 
 def pay_index(request):
-    f = PaymentFilter(request.GET, queryset=Payment.objects.all())
-    return render_to_response('payment/base_pay_index.html', {'payment_list': f})
+    f = PaymentFilter(request.GET, queryset=Payment.objects.all().order_by('-payment_date'))
+    # return render_to_response('payment/base_pay_index.html', {'payment_list': f})
+    return render_to_response("payment/base_pay_index.html",{'payment_list': f}, context_instance=RequestContext(request))
 
 
 def pay_member_index(request, member_id):
@@ -25,8 +26,6 @@ def create_payment(request):
     form = PaymentForm(request.POST or None)
     if form.is_valid():
         form.save()
-        # pay_mem = Payment.objects.create()
-        # return HttpResponseRedirect('payment/member/%i/' % pay_mem.member)
         return redirect('/payment/')
     return render(request, 'payment/base_pay_manage.html', {'form':form})
 

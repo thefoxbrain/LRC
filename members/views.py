@@ -10,7 +10,7 @@ def member_index(request):
 """    
 
 def member_index(request):
-    f = MemberFilter(request.GET, queryset=Member.objects.all())
+    f = MemberFilter(request.GET, queryset=Member.objects.all().order_by('first_name'))
     return render_to_response('member/base_index.html', {'member_index': f})
 
 def member_detail(request, member_id):

@@ -24,34 +24,32 @@
 		<td><a href="/member/{{ member.id }}/">{{ member.first_name }}</a></td>
 		<td><a href="/member/{{ member.id }}/">{{ member.last_name }}</a></td>
 		<td><a href="/member/{{ member.id }}/">{{ member.email }}</a></td>
-		<td><a href="/member/membership/{{ member.membership_type.id }}/">{{ member.membership_type }}</a></td>
-		<td><a href="/payment/member/{{ member.id }}/"><img src="/members/static/history.png" alt="Payment History" width="24" length="24"></a></td>
-		
+		<td><a href="/member/?membership_type={{ member.membership_type.id }}">{{ member.membership_type }}</a></td>
+		<td><a href="/payment?member={{ member.id }}"><img src="/members/static/history.png" alt="Payment History" width="24" length="24"> ( {{ member.members.count }} )</a></td>
 	</tr>
 {% endfor %}
 
 </tbody>
 </table>
+
 {% else %}
 <p>No members are available.</p>
 {% endif %}
+
 
 {% endblock %}
 
 {% block sidebar2 %}
     <form action="" method="get" class="input-medium">
-	    <ul class="nav nav-list">
-			<li class="nav-header">Filter</li>
-			<li>Member Type</li>
-			<li>{{ member_index.form.membership_type }}</li>
-			<li></li>
-			<li>First Name</li>
-			<li>{{ member_index.form.first_name }}</li>
-			<li></li>
-			<li>Last Name</li>
-			<li>{{ member_index.form.last_name }}</li>			
-	    </ul>
-	    <input type="submit" value="Filter" />
+<h4 class="text-left">Filter</h4> 
+			Member Type<br>
+			{{ member_index.form.membership_type }}
+			First Name<br>
+			{{ member_index.form.first_name }}
+			Last Name<br>
+			{{ member_index.form.last_name }}
+	    <input class="btn btn-success" type="submit" value="Apply" />
     </form>
+	<a class="btn btn-success" href="/member/">Show All</a>
 
 {% endblock sidebar2%}

@@ -39,7 +39,7 @@ class Member(models.Model):
     em_contact_no = models.CharField(max_length=200,  blank=True, verbose_name='Emergency Contact Number')
     
     # Membership Type
-    membership_type = models.ForeignKey(MembershipType)
+    membership_type = models.ForeignKey(MembershipType, related_name="types")
     
     # Previous Rowing Experience
     br_membership_no = models.CharField(max_length=200,  blank=True, verbose_name='BR Membership number')
@@ -87,5 +87,10 @@ class MemberFilter(django_filters.FilterSet):
     class Meta:
         model = Member
         fields = ['first_name', 'last_name', 'membership_type']
+        
+    def __init__(self, *args, **kwargs):
+                super(MemberFilter, self).__init__(*args, **kwargs)
+                self.filters['membership_type'].extra.update(
+                    {'empty_label': 'All'})        
         
 

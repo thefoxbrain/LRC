@@ -19,17 +19,31 @@ td:nth-child(even) {
 
 
 #id_membership_type {
-	width:130px;
+	width:150px;
 }
 
 #id_first_name {
-	width:115px;
+	width:135px;
 }
 
 #id_last_name {
-	width:115px;
+	width:135px;
 }
 
+/* Payment Form */
+
 #id_member {
-	width:115px;
+	width:150px;
+}
+
+#id_payment_type {
+	width:150px;
+}
+
+#id_payment_date {
+	width:135px;
+}
+
+div.pagination {
+	color:red;
 }

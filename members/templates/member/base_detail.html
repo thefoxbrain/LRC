@@ -25,14 +25,14 @@
       <td>Last Name : </td>
       <td>{{ member.last_name }}</td>
       <td>Payment :</td>
-      <td><a href="/payment/member/{{ member.id }}/">Payment History</a></td></td><td>
+      <td><a href="/payment/?member={{ member.id }}">Payment History</a></td></td><td>
     </tr>
 	<tr>
 		<td><br></td>
 	</tr>
 	<tr>
       <td>Membership : </td>
-      <td><a href="/member/membership/{{ member.membership_type.id }}/">{{ member.membership_type.name }}</a></td>
+      <td><a href="/member/?membership_type={{ member.membership_type.id }}">{{ member.membership_type }}</a></td>
       <td>Payment :</td>
 	</tr>
 	<tr>

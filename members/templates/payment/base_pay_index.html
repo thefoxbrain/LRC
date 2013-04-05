@@ -1,5 +1,8 @@
 {% extends "base.html" %}
 
+{% load pagination_tags %}
+
+
 {% block active_payments %}active{% endblock %}
 
 {% block title %}List of Payments{% endblock %}
@@ -7,11 +10,14 @@
 {% block content %}
 <h3>Payments</h3>
 {% if payment_list %}
+{% autopaginate payment_list 5 %}
+
 <table class="table table-hover">
   <tbody>
 		<th>Payment Date</th>
 		<th width="300">Nember</th>
 		<th>Amount</th>
+		<th>Type</th>
 		<th>History</th>
 		<th>Edit</th>
 		<th>Delete</th>
@@ -21,13 +27,18 @@
 		<td>{{ payment.payment_date }}</a></td>
 		<td><a href="/member/{{ payment.member.id }}/">{{ payment.member.first_name }} {{ payment.member.last_name }}</a></td>
 		<td>{{ payment.amount }}</td>
-		<td><a href="/payment/member/{{ payment.member.id }}/"><img src="{{ STATIC_URL }}history.png" alt="Payment History" width="24" length="24"></a></td>
-		<td><a href="/payment/manage/{{ payment.id }}/"><img src="{{ STATIC_URL }}edit.png" alt="Edit" width="24" length="24"></a></td>
-		<td><a href="/payment/delete/{{ payment.id }}/"><img src="{{ STATIC_URL }}delete.png" alt="Delete" width="24" length="24"></a></td>
+		<td>{{ payment.get_payment_type_display }}</td>
+		<td><a href="/payment/?member={{ payment.member.id }}"><img src="/members/static/history.png" alt="Payment History" width="24" length="24"></a></td>
+		<td><a href="/payment/manage/{{ payment.id }}/"><img src="/members/static/edit.png" alt="Edit" width="24" length="24"></a></td>
+		<td><a href="/payment/delete/{{ payment.id }}/"><img src="/members/static/delete.png" alt="Delete" width="24" length="24"></a></td>
 	</tr>
 {% endfor %}
 </tbody>
 </table>
+
+{% paginate %}
+
+
 {% else %}
 <p>No payments are available.</p>
 {% endif %}
@@ -35,18 +46,15 @@
 
 {% block sidebar2 %}
     <form action="" method="get" class="input-medium">
-	    <ul class="nav nav-list">
-			<li class="nav-header">Filter</li>
-			<li>Payment Date</li>
-			<li>{{ payment_list.form.payment_date }}</li>
-			<li></li>
-			<li>Member</li>
-			<li>{{ payment_list.form.member }}</li>
-			<li></li>
-			<li>Type</li>
-			<li>{{ payment_list.form.payment_type }}</li>			
-	    </ul>
-	    <input type="submit" value="Filter" />
+		<h4 class="text-left">Filter</h4> 
+			Payment Date<br>
+			{{ payment_list.form.payment_date }}
+			Member<br>
+			{{ payment_list.form.member }}
+			Type<br>
+			{{ payment_list.form.payment_type }}			
+	    <input class="btn btn-success" type="submit" value="Apply" />
     </form>
+	<a class="btn btn-success" href="/payment/">Show All</a>
 
 {% endblock sidebar2%}
