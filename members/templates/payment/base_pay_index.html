@@ -32,3 +32,21 @@
 <p>No payments are available.</p>
 {% endif %}
 {% endblock %}
+
+{% block sidebar2 %}
+    <form action="" method="get" class="input-medium">
+	    <ul class="nav nav-list">
+			<li class="nav-header">Filter</li>
+			<li>Payment Date</li>
+			<li>{{ payment_list.form.payment_date }}</li>
+			<li></li>
+			<li>Member</li>
+			<li>{{ payment_list.form.member }}</li>
+			<li></li>
+			<li>Type</li>
+			<li>{{ payment_list.form.payment_type }}</li>			
+	    </ul>
+	    <input type="submit" value="Filter" />
+    </form>
+
+{% endblock sidebar2%}

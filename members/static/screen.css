@@ -16,3 +16,20 @@ td:nth-child(even) {
 	text-align:left;
 	width:200px;
 }
+
+
+#id_membership_type {
+	width:130px;
+}
+
+#id_first_name {
+	width:115px;
+}
+
+#id_last_name {
+	width:115px;
+}
+
+#id_member {
+	width:115px;
+}

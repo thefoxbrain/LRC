@@ -1,6 +1,7 @@
 from datetime import date
 # from PIL import Image
 from django.db import models
+import django_filters
 
 from membership.models import MembershipType
     
@@ -82,3 +83,9 @@ class Member(models.Model):
     def __unicode__(self):
         return u'%s %s' % (self.first_name, self.last_name)
     
+class MemberFilter(django_filters.FilterSet):
+    class Meta:
+        model = Member
+        fields = ['first_name', 'last_name', 'membership_type']
+        
+

@@ -1,11 +1,11 @@
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, get_object_or_404, redirect,render_to_response
 
-from payment.models import Payment,PaymentForm
+from payment.models import Payment,PaymentForm,PaymentFilter
 
 def pay_index(request):
-    payment_list = Payment.objects.all().order_by('-id')
-    context = {'payment_list': payment_list}
-    return render(request, 'payment/base_pay_index.html', context)
+    f = PaymentFilter(request.GET, queryset=Payment.objects.all())
+    return render_to_response('payment/base_pay_index.html', {'payment_list': f})
+
 
 def pay_member_index(request, member_id):
     member_payment_list = Payment.objects.filter(member__id__exact = member_id).order_by('-payment_date')
