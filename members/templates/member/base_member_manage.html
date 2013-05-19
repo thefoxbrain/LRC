@@ -1,0 +1,150 @@
+{% extends "base.html" %}
+
+{% block active_addmember %}active{% endblock %}
+
+{% block title %}Member Add\Edit{% endblock %}
+
+{% block content %}
+
+<h3>Add \ Edit Member</h3>
+
+
+<form action="" method="POST">{% csrf_token %}
+<h4>Personal Information</h4>
+{{ form.non_field_errors }}
+<table class="table table-hover">
+	<tbody>
+		<tr>
+			<td>    
+				<div class="fieldWrapper">
+			        {{ form.title.errors }}
+			        <label for="id_title">Title:</label>
+			        {{ form.title }}
+    			</div>
+    		</td>
+			<td>
+			    <div class="fieldWrapper">
+			        {{ form.gender.errors }}
+			        <label for="id_gender">Gender:</label>
+			        {{ form.gender }}
+    			</div>
+			</td>
+		</tr>
+
+		<tr>
+			<td>    
+				<div class="fieldWrapper">
+			        {{ form.first_name.errors }}
+			        <label for="id_first_name">First Name:</label>
+			        {{ form.first_name }}
+    			</div>
+    		</td>
+			<td>
+			    <div class="fieldWrapper">
+			        {{ form.last_name.errors }}
+			        <label for="id_last_namer">Surname:</label>
+			        {{ form.last_name }}
+    			</div>
+			</td>
+		</tr>
+		
+		<tr>
+			<td>    
+				<div class="fieldWrapper">
+			        {{ form.address_1.errors }}
+			        <label for="id_address_1">Address 1:</label>
+			        {{ form.address_1 }}
+    			</div>
+    		</td>
+
+			<td>
+				<div class="fieldWrapper">
+			        {{ form.date_of_birth.errors }}
+			        <label for="id_date_of_birth">DoB:</label>
+			        {{ form.date_of_birth }}
+    			</div>			
+		</tr>
+		
+		<tr>
+			<td>    
+				<div class="fieldWrapper">
+			        {{ form.address_2.errors }}
+			        <label for="id_address_2">Address 2:</label>
+			        {{ form.address_2 }}
+    			</div>
+    		</td>
+			<td>
+				<div class="fieldWrapper">
+			        {{ form.home_phone.errors }}
+			        <label for="id_home_phone">Home Phone:</label>
+			        {{ form.home_phone }}
+    			</div>
+			</td>
+		</tr>				
+
+		<tr>
+			<td>    
+				<div class="fieldWrapper">
+			        {{ form.address_3.errors }}
+			        <label for="id_address_3">Address 3:</label>
+			        {{ form.address_3 }}
+    			</div>
+    		</td>
+			<td>
+				<div class="fieldWrapper">
+			        {{ form.mobile_phone.errors }}
+			        <label for="id_mobile_phone">Mobile Phone:</label>
+			        {{ form.mobile_phone }}
+    			</div>
+			</td>
+		</tr>
+		
+		<tr>
+			<td>    
+				<div class="fieldWrapper">
+			        {{ form.address_4.errors }}
+			        <label for="id_address_4">Address 4:</label>
+			        {{ form.address_4 }}
+    			</div>
+    		</td>
+			<td>
+			</td>
+		</tr>
+		
+		<tr>
+			<td>    
+				<div class="fieldWrapper">
+			        {{ form.post_code.errors }}
+			        <label for="id_post_code">Post Code:</label>
+			        {{ form.post_code }}
+    			</div>
+    		</td>
+			<td>
+			</td>
+		</tr>
+		
+		<tr>
+			<td>    
+				<div class="fieldWrapper">
+			        {{ form.email.errors }}
+			        <label for="id_email">email:</label>
+			        {{ form.email }}
+    			</div>
+    		</td>
+			<td>
+			</td>
+		</tr>				
+	</tbody>
+</table>		
+
+
+<h4>Emergency Contact Details</h4>		
+				
+
+
+
+    <p><input type="submit" value="Save" /></p>
+</form>		
+
+ 
+{% endblock %}

@@ -1,6 +1,7 @@
 from datetime import date
 # from PIL import Image
 from django.db import models
+from django.forms import ModelForm
 import django_filters
 
 from membership.models import MembershipType
@@ -87,10 +88,16 @@ class MemberFilter(django_filters.FilterSet):
     class Meta:
         model = Member
         fields = ['first_name', 'last_name', 'membership_type']
-        
+
     def __init__(self, *args, **kwargs):
                 super(MemberFilter, self).__init__(*args, **kwargs)
                 self.filters['membership_type'].extra.update(
-                    {'empty_label': 'All'})        
+                    {'empty_label': 'All'})         
+        
+class MemberForm(ModelForm):
+
+    class Meta:
+        model = Member
+        # fields = ['first_name', 'last_name','date_of_birth']     
         
 

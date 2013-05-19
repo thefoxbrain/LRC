@@ -19,10 +19,10 @@
 	<tr>
 		<td>{{ membership.name }}</td>
 		<td>{{ membership.cost }}</td>
-		<td><a href="/member/?membership_type={{ membership.id }}"><img src="{{ STATIC_URL }}people.png" alt="Payment History" width="24" length="24"> ( {{ membership.types.count }} )</a></td>
+			<td><a href="/member/?membership_type={{ membership.id }}"><img src="{{ STATIC_URL }}people.png" alt="Payment History" width="24" length="24"> ( {{ membership.types.count }} )</a></td>
 </tr>
 {% endfor %}
-{{ sec.books_set.count }}
+
  </table>
 {% else %}
 <p>No payments are available.</p>

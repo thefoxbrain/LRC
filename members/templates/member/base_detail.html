@@ -12,33 +12,39 @@
     <tr>
       <td>Title : </td>
       <td>{{ member.get_title_display }}</td>
+	  <td></td>
       <td>Date of Birth : </td>
       <td>{{ member.date_of_birth }}</td>
     </tr>
     <tr>
       <td>First Name : </td>
       <td>{{ member.first_name }}</td>
+      <td></td>
       <td>Gender : </td>
       <td>{{ member.get_gender_display }}</td>      
     </tr>
     <tr>
       <td>Last Name : </td>
       <td>{{ member.last_name }}</td>
+      <td></td>
       <td>Payment :</td>
-      <td><a href="/payment/?member={{ member.id }}">Payment History</a></td></td><td>
+      <td><a href="/payment/member/{{ member.id }}/">Payment History</a></td></td><td>
     </tr>
 	<tr>
 		<td><br></td>
 	</tr>
 	<tr>
       <td>Membership : </td>
-      <td><a href="/member/?membership_type={{ member.membership_type.id }}">{{ member.membership_type }}</a></td>
+      <td><a href="/member/?membership_type={{ member.membership_type.id }}">{{ member.membership_type.name }}</a></td>
+      <td></td>
       <td>Payment :</td>
+      <td>Cheque</td>
 	</tr>
 	<tr>
 		<td><br></td>
 	</tr>
 	      <td> Created By : </td>
+	      <td>Rob FO</td>
 	      <td></td>
 	      <td>Start Date :</td>
 	      <td>{{ member.start_date }}</td>
@@ -47,7 +53,8 @@
 	      <td>Parent/Guardian : </td>
 	      <td>{{ member.pg_name }}</td>
 	      <td></td>
-	      <td></td>   
+	      <td>asdf</td>
+	      <td>fdsa</td>
 	    </tr>
 	  </tbody>
 	</table>  	  
@@ -232,8 +239,7 @@
 
 </div>
 
-{% endblock content%}		
-
+{% endblock content%}
 
 <br>
 <br>
