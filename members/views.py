@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect,render_to_response,HttpResponse
-
+from datetime import datetime, date
+import xlwt
 from members.models import Member,MemberFilter,MemberForm
 
 """
@@ -45,21 +46,33 @@ def member_edit(request, member_id):
     return render(request, 'member/base_member_manage.html', {'form':form})
 
 def member_export(request):
-    from xlwt import Workbook
 
-    wb = Workbook()
-    ws = wb.add_sheet('Sheetname')
-    ws.write(0, 0, 'first')
-    ws.write(0, 1, 'Surname')
-    ws.write(1, 0, 'Hans')
-    ws.write(1, 1, 'Muster')
-
-    fname = 'testfile.xls'
-    response = HttpResponse(mimetype="application/vnd.ms-excel")
-    response['Content-Disposition'] = 'attachment; filename=%s' % fname
-
-    wb.save(response)
-
+    book = xlwt.Workbook(encoding='utf8')
+    sheet = book.add_sheet('untitled')
+    
+    default_style = xlwt.Style.default_style
+    datetime_style = xlwt.easyxf(num_format_str='dd/mm/yyyy hh:mm')
+    date_style = xlwt.easyxf(num_format_str='dd/mm/yyyy')
+    
+    values_list = Member.objects.all().values_list()
+    
+    headers = [f.name for f in Member._meta.fields] 
+    values_list = [headers] + list(values_list) 
+    
+    for row, rowdata in enumerate(values_list):
+        for col, val in enumerate(rowdata):
+            if isinstance(val, datetime):
+                style = datetime_style
+            elif isinstance(val, date):
+                style = date_style
+            else:
+                style = default_style
+    
+            sheet.write(row, col, val, style=style)
+    
+    response = HttpResponse(mimetype='application/vnd.ms-excel')
+    response['Content-Disposition'] = 'attachment; filename=example.xls'
+    book.save(response)
     return response
 
 
