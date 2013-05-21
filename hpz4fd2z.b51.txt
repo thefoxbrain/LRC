@@ -1,0 +1,27 @@
+﻿
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# Not currently on any branch.
+# You are currently rebasing.
+#   (all conflicts fixed: run "git rebase --continue")
+#
+# Changes to be committed:
+#   (use "git reset HEAD <file>..." to unstage)
+#
+#	modified:   LRC/settings.py
+#	modified:   members/models.py
+#	modified:   members/static/screen.css
+#	modified:   members/templates/base.html
+#	modified:   members/templates/member/base_detail.html
+#	modified:   members/templates/member/base_index.html
+#	new file:   members/templates/member/base_member_manage.html
+#	modified:   members/templates/membership/base_membership_index.html
+#	modified:   members/templates/payment/base_pay_index.html
+#	modified:   members/templates/payment/base_pay_manage.html
+#	modified:   members/urls.py
+#	modified:   members/views.py
+#	modified:   payment/models.py
+#	modified:   payment/views.py
+#	modified:   sqlite.db
+#
+
