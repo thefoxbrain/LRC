@@ -105,6 +105,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'pagination.middleware.PaginationMiddleware',
     # Uncomment the next line for simple clickjacking protection:
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
@@ -137,6 +138,8 @@ INSTALLED_APPS = (
     'payment',
     'membership',
     # 'crispy_forms',
+    # 'django_extensions',
+    'pagination',    
     'django_filters',
     'xlwt'
 )

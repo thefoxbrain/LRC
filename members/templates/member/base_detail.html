@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-
+{% block active_members %}active{% endblock %}
 
 {% block title %}Member Detail{% endblock %}
 
@@ -28,7 +28,7 @@
       <td>{{ member.last_name }}</td>
       <td></td>
       <td>Payment :</td>
-      <td><a href="/payment/member/{{ member.id }}/">Payment History</a></td></td><td>
+      <td><a href="/payment/?member={{ member.id }}">Payment History</a></td></td><td>
     </tr>
 	<tr>
 		<td><br></td>

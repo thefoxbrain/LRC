@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block active_addpayments %}active{% endblock %}
+{% block active_addpayment %}active{% endblock %}
 
 {% block title %}List of Payments{% endblock %}
 
@@ -11,7 +11,7 @@
 <form action="" method="POST">{% csrf_token %}
 
 {{ form.non_field_errors }}
-<table class="table table-hover">
+<table>
 	<tbody>
 		<tr>
 			<td>    
@@ -21,10 +21,11 @@
 			        {{ form.member }}
     			</div>
     		</td>
+    		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 			<td>
 			    <div class="fieldWrapper">
 			        {{ form.payment_date.errors }}
-			        <label for="id_payment_date">Date:</label>
+			        <label class="datepicker" for="id_payment_date">Date:</label>
 			        {{ form.payment_date }}
     			</div>
 			</td>
@@ -38,6 +39,7 @@
 			        {{ form.amount }}
     			</div>
 			</td>
+			<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 			<td>
 			    <div class="fieldWrapper">
 			        {{ form.payment_type.errors }}
@@ -56,7 +58,7 @@
     			</div>
 			</td>
 			<td>
-
+	        
 			</td>
 		</tr>		
 	</tbody>

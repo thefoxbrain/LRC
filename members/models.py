@@ -5,6 +5,14 @@ from django.forms import ModelForm
 import django_filters
 
 from membership.models import MembershipType
+
+FILTER_PAYMENTMETHOD_CHOICES = (
+    ('', 'All'),
+    ('S', 'Standing Order'),
+    ('Q', 'Cheque'),
+    ('C', 'Cash'),
+    ('B', 'Bank Transfer'),
+    )
     
 class Member(models.Model):
     # Personal Information
@@ -50,12 +58,12 @@ class Member(models.Model):
         ('Y', 'Yes'),
         ('N', 'No'),
     )
-    capsize_drill = models.CharField(max_length=1, choices=YESNO_CHOICES,blank=True)
+    capsize_drill = models.CharField(max_length=1, choices=YESNO_CHOICES,default='N',blank=True)
     
     # Swimming Ability 
-    swim_50  = models.CharField(max_length=1, choices=YESNO_CHOICES, blank=True,verbose_name='50 metres')
-    swim_5_underwater = models.CharField(max_length=1, choices=YESNO_CHOICES, blank=True,verbose_name='5 metres underwater')
-    swim_tread = models.CharField(max_length=1, choices=YESNO_CHOICES, blank=True,verbose_name='Tread water for 2 minutes')
+    swim_50  = models.CharField(max_length=1, choices=YESNO_CHOICES, default='Y', blank=True,verbose_name='50 metres')
+    swim_5_underwater = models.CharField(max_length=1, choices=YESNO_CHOICES,default='Y', blank=True,verbose_name='5 metres underwater')
+    swim_tread = models.CharField(max_length=1, choices=YESNO_CHOICES, default='Y', blank=True,verbose_name='Tread water for 2 minutes')
     
     # Start Date   
     start_date = models.DateField(("Start Date"), default=date.today)
@@ -80,15 +88,31 @@ class Member(models.Model):
     
     health_4_other = models.CharField(max_length=1, choices=YESNO_CHOICES, default='N',verbose_name='Other health conditions?')
     health_4_details  = models.TextField(blank=True, verbose_name='if Yes - details')
+    PAYMENTMETHOD_CHOICES = (
+        ('S', 'Standing Order'),
+        ('Q', 'Cheque'),
+        ('C', 'Cash'),
+        ('B', 'Bank Transfer'),
+    )
+    
+    payment_method = models.CharField(max_length=1, choices=PAYMENTMETHOD_CHOICES,blank=True)
+    full_name = models.CharField(max_length=200,  blank=True)
     
     def __unicode__(self):
         return u'%s %s' % (self.first_name, self.last_name)
     
+    def save(self, *args, **kwargs):
+        self.full_name = '%s %s' % (self.first_name, self.last_name)
+        super(Member, self).save(*args, **kwargs)    
+    
 class MemberFilter(django_filters.FilterSet):
+    full_name = django_filters.AllValuesFilter()
+    payment_method = django_filters.ChoiceFilter(choices=FILTER_PAYMENTMETHOD_CHOICES, label='Payment Method')
+        
     class Meta:
         model = Member
-        fields = ['first_name', 'last_name', 'membership_type']
-
+        fields = ['full_name', 'payment_method', 'membership_type']
+        
     def __init__(self, *args, **kwargs):
                 super(MemberFilter, self).__init__(*args, **kwargs)
                 self.filters['membership_type'].extra.update(

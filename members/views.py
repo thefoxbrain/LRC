@@ -12,7 +12,9 @@ def member_index(request):
 
 def member_index(request):
     f = MemberFilter(request.GET, queryset=Member.objects.all().order_by('first_name'))
-    return render_to_response('member/base_index.html', {'member_index': f})
+    # return render_to_response('member/base_index.html', {'member_index': f})
+    return render(request,'member/base_index.html', {'member_index': f})
+    
 
 def member_detail(request, member_id):
     member = get_object_or_404(Member, pk=member_id)
@@ -55,7 +57,7 @@ def member_export(request):
     date_style = xlwt.easyxf(num_format_str='dd/mm/yyyy')
     
     values_list = Member.objects.all().values_list()
-    
+        
     headers = [f.name for f in Member._meta.fields] 
     values_list = [headers] + list(values_list) 
     

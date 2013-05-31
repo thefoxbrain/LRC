@@ -36,6 +36,7 @@ class MemberAdmin(admin.ModelAdmin):
                                             ]}),
         ('Class of Membership', {'fields': [
                                             'membership_type',
+                                            'payment_method',
                                             ]}),
         ('Previous Rowing experience', {'fields': [
                                             'br_membership_no',

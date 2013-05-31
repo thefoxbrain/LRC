@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 
+{% load pagination_tags %}
+
 {% block active_membership %}active{% endblock %}
 
 {% block title %}List of Payments{% endblock %}
@@ -9,6 +11,8 @@
 
 <h3>Membership Types</h3>
 {% if membership_list %}
+
+{% autopaginate membership_list %}
 <table class="table table-hover">
 	<tr>
 		<th>Name</th>
@@ -24,6 +28,8 @@
 {% endfor %}
 
  </table>
+ 
+ {% paginate %}
 {% else %}
 <p>No payments are available.</p>
 {% endif %}

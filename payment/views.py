@@ -4,7 +4,8 @@ from payment.models import Payment,PaymentForm,PaymentFilter
 
 def pay_index(request):
     f = PaymentFilter(request.GET, queryset=Payment.objects.all().order_by('-payment_date'))
-    return render_to_response('payment/base_pay_index.html', {'payment_list': f})
+    # return render_to_response('payment/base_pay_index.html', {'payment_list': f})
+    return render(request,'payment/base_pay_index.html', {'payment_list': f})
 
 
 def pay_member_index(request, member_id):

@@ -8,143 +8,445 @@
 
 <h3>Add \ Edit Member</h3>
 
-
 <form action="" method="POST">{% csrf_token %}
-<h4>Personal Information</h4>
-{{ form.non_field_errors }}
-<table class="table table-hover">
-	<tbody>
-		<tr>
-			<td>    
-				<div class="fieldWrapper">
-			        {{ form.title.errors }}
-			        <label for="id_title">Title:</label>
-			        {{ form.title }}
-    			</div>
-    		</td>
-			<td>
-			    <div class="fieldWrapper">
-			        {{ form.gender.errors }}
-			        <label for="id_gender">Gender:</label>
-			        {{ form.gender }}
-    			</div>
-			</td>
-		</tr>
-
-		<tr>
-			<td>    
-				<div class="fieldWrapper">
-			        {{ form.first_name.errors }}
-			        <label for="id_first_name">First Name:</label>
-			        {{ form.first_name }}
-    			</div>
-    		</td>
-			<td>
-			    <div class="fieldWrapper">
-			        {{ form.last_name.errors }}
-			        <label for="id_last_namer">Surname:</label>
-			        {{ form.last_name }}
-    			</div>
-			</td>
-		</tr>
-		
-		<tr>
-			<td>    
-				<div class="fieldWrapper">
-			        {{ form.address_1.errors }}
-			        <label for="id_address_1">Address 1:</label>
-			        {{ form.address_1 }}
-    			</div>
-    		</td>
-
-			<td>
-				<div class="fieldWrapper">
-			        {{ form.date_of_birth.errors }}
-			        <label for="id_date_of_birth">DoB:</label>
-			        {{ form.date_of_birth }}
-    			</div>			
-		</tr>
-		
-		<tr>
-			<td>    
-				<div class="fieldWrapper">
-			        {{ form.address_2.errors }}
-			        <label for="id_address_2">Address 2:</label>
-			        {{ form.address_2 }}
-    			</div>
-    		</td>
-			<td>
-				<div class="fieldWrapper">
-			        {{ form.home_phone.errors }}
-			        <label for="id_home_phone">Home Phone:</label>
-			        {{ form.home_phone }}
-    			</div>
-			</td>
-		</tr>				
-
-		<tr>
-			<td>    
-				<div class="fieldWrapper">
-			        {{ form.address_3.errors }}
-			        <label for="id_address_3">Address 3:</label>
-			        {{ form.address_3 }}
-    			</div>
-    		</td>
-			<td>
-				<div class="fieldWrapper">
-			        {{ form.mobile_phone.errors }}
-			        <label for="id_mobile_phone">Mobile Phone:</label>
-			        {{ form.mobile_phone }}
-    			</div>
-			</td>
-		</tr>
-		
-		<tr>
-			<td>    
-				<div class="fieldWrapper">
-			        {{ form.address_4.errors }}
-			        <label for="id_address_4">Address 4:</label>
-			        {{ form.address_4 }}
-    			</div>
-    		</td>
-			<td>
-			</td>
-		</tr>
-		
-		<tr>
-			<td>    
-				<div class="fieldWrapper">
-			        {{ form.post_code.errors }}
-			        <label for="id_post_code">Post Code:</label>
-			        {{ form.post_code }}
-    			</div>
-    		</td>
-			<td>
-			</td>
-		</tr>
-		
-		<tr>
-			<td>    
-				<div class="fieldWrapper">
-			        {{ form.email.errors }}
-			        <label for="id_email">email:</label>
-			        {{ form.email }}
-    			</div>
-    		</td>
-			<td>
-			</td>
-		</tr>				
-	</tbody>
-</table>		
-
-
-<h4>Emergency Contact Details</h4>		
+	<fieldset>
+		<legend>Personal Information</legend>
+			{{ form.non_field_errors }}
+			<table>
+				<tbody>
+					<tr>
+						<td>    
+							<div class="fieldWrapper">
+						        {{ form.title.errors }}
+						        <label for="id_title">Title:</label>
+						        {{ form.title }}
+			    			</div>
+			    		</td>
+			    		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+						<td>
+						    <div class="fieldWrapper">
+						        {{ form.gender.errors }}
+						        <label for="id_gender">Gender:</label>
+						        {{ form.gender }}
+			    			</div>
+						</td>
+					</tr>
+			
+					<tr>
+						<td>    
+							<div class="fieldWrapper">
+						        {{ form.first_name.errors }}
+						        <label for="id_first_name">First Name:</label>
+						        {{ form.first_name }}
+			    			</div>
+			    		</td>
+			    		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+						<td>
+						    <div class="fieldWrapper">
+						        {{ form.last_name.errors }}
+						        <label for="id_last_namer">Surname:</label>
+						        {{ form.last_name }}
+			    			</div>
+						</td>
+					</tr>
 				
+				</tbody>
+			</table>	
+					
+
+			<legend>Address</legend></td>
+					
+			<table>
+				<tbody>
+					<tr>
+						<td>    
+							<div class="fieldWrapper">
+						        {{ form.address_1.errors }}
+						        <label for="id_address_1">Address 1:</label>
+						        {{ form.address_1 }}
+			    			</div>
+			    		</td>
+			    		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+						<td>
+							<div class="fieldWrapper">
+						        {{ form.date_of_birth.errors }}
+						        <label for="id_date_of_birth">Date of Birth:</label>
+						        {{ form.date_of_birth }}
+			    			</div>			
+					</tr>
+
+					<tr>
+						<td>    
+							<div class="fieldWrapper">
+						        {{ form.address_2.errors }}
+						        <label for="id_address_2">Address 2:</label>
+						        {{ form.address_2 }}
+			    			</div>
+			    		</td>
+			    		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+						<td>
+							<div class="fieldWrapper">
+						        {{ form.home_phone.errors }}
+						        <label for="id_home_phone">Home Phone:</label>
+						        {{ form.home_phone }}
+			    			</div>
+						</td>
+					</tr>				
+			
+					<tr>
+						<td>    
+							<div class="fieldWrapper">
+						        {{ form.address_3.errors }}
+						        <label for="id_address_3">Address 3:</label>
+						        {{ form.address_3 }}
+			    			</div>
+			    		</td>
+			    		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+						<td>
+							<div class="fieldWrapper">
+						        {{ form.mobile_phone.errors }}
+						        <label for="id_mobile_phone">Mobile Phone:</label>
+						        {{ form.mobile_phone }}
+			    			</div>
+						</td>
+					</tr>
+					
+					<tr>
+						<td>    
+							<div class="fieldWrapper">
+						        {{ form.address_4.errors }}
+						        <label for="id_address_4">Address 4:</label>
+						        {{ form.address_4 }}
+			    			</div>
+			    		</td>
+						<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+						</td>
+					</tr>
+					
+					<tr>
+						<td>    
+							<div class="fieldWrapper">
+						        {{ form.post_code.errors }}
+						        <label for="id_post_code">Post Code:</label>
+						        {{ form.post_code }}
+			    			</div>
+			    		</td>
+						<td>
+						</td>
+					</tr>
+					
+					<tr>
+						<td>    
+							<div class="fieldWrapper">
+						        {{ form.email.errors }}
+						        <label for="id_email">Email:</label>
+						        {{ form.email }}
+			    			</div>
+			    		</td>
+						<td>
+						</td>
+					</tr>				
+				</tbody>
+			</table>		
+			
+			
+			<legend>Emergency Contact Details</legend>	
+			<table>
+				<tbody>
+					<tr>
+						<td>    
+							<div class="fieldWrapper">
+						        {{ form.em_contact_name.errors }}
+						        <label for="id_em_contact_name">Contact Name:</label>
+						        {{ form.em_contact_name }}
+			    			</div>
+			    		</td>
+			    		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+						<td>
+						    <div class="fieldWrapper">
+						        {{ form.em_relationship.errors }}
+						        <label for="id_em_relationship">Relationship:</label>
+						        {{ form.em_relationship }}
+			    			</div>
+						</td>
+
+					<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+
+						<td>    
+							<div class="fieldWrapper">
+						        {{ form.em_contact_no.errors }}
+						        <label for="id_em_contact_no">Contact No.:</label>
+						        {{ form.em_contact_no }}
+			    			</div>
+			    		</td>
+			    		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+						<td>
+						</td>
+					</tr>
+				
+				</tbody>
+			</table>	
+			
+			<legend>Membership</legend>	
+			<table>
+				<tbody>
+					<tr>
+						<td>    
+							<div class="fieldWrapper">
+						        {{ form.membership_type.errors }}
+						        <label for="id_membership_type">Membership Type:</label>
+						        {{ form.membership_type }}
+			    			</div>
+			    		</td>
+			    		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+						<td>
+						    <div class="fieldWrapper">
+						        {{ form.start_date.errors }}
+						        <label for="id_start_date">Start Date:</label>
+						        {{ form.start_date }}
+			    			</div>
+						</td>
+						<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+						<td>
+						    <div class="fieldWrapper">
+						        {{ form.payment_method.errors }}
+						        <label for="id_payment_method">Payment Method:</label>
+						        {{ form.payment_method }}
+			    			</div>
+						</td>						
+					</tr>
+				
+				</tbody>
+			</table>		
+			
+			<legend>Rowing Experience</legend>	
+			
+			<table>
+				<tbody>
+					<tr>
+						<td>    
+							<div class="fieldWrapper">
+						        {{ form.br_membership_no.errors }}
+						        <label for="id_br_membership_no">British Rowing No.:</label>
+						        {{ form.br_membership_no }}
+			    			</div>
+			    		</td>
+			    		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+						<td>
+						    <div class="fieldWrapper">
+						        {{ form.rowing_points.errors }}
+						        <label for="id_rowing_points">Rowing Points:</label>
+						        {{ form.rowing_points }}
+			    			</div>
+						</td>
+					</tr>
+			
+					<tr>
+						<td>    
+							<div class="fieldWrapper">
+						        {{ form.capsize_drill.errors }}
+						        <label for="id_capsize_drill">Capsize Drill:</label>
+						        {{ form.capsize_drill }}
+			    			</div>
+			    		</td>
+			    		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+						<td>
+						    <div class="fieldWrapper">
+						        {{ form.sculling_points.errors }}
+						        <label for="id_sculling_points">Sculling Points:</label>
+						        {{ form.sculling_points }}
+			    			</div>
+						</td>
+					</tr>
+				
+				</tbody>
+			</table>		
+			
+			
+			<legend>Swimming Ability</legend>	
+			
+			<table>
+				<tbody>
+					<tr>
+						<td>    
+							<div class="fieldWrapper">
+						        {{ form.swim_50.errors }}
+						        <label for="id_swim_50">Swim 50 metres:</label>
+						        {{ form.swim_50 }}
+			    			</div>
+			    		</td>
+			    		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+						<td>
+						    <div class="fieldWrapper">
+						        {{ form.swim_5_underwater.errors }}
+						        <label for="id_swim_5_underwater">Swim 5 underwater:</label>
+						        {{ form.swim_5_underwater }}
+			    			</div>
+						</td>
+			    		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+						<td>    
+							<div class="fieldWrapper">
+						        {{ form.swim_tread.errors }}
+						        <label for="id_swim_tread">Tread water:</label>
+						        {{ form.swim_tread }}
+			    			</div>
+			    		</td>
+					</tr>
+				
+				</tbody>
+			</table>			
+			
+			<legend>Health Questionnaire</legend>
+			<legend>1 - General Health</legend>		
+			<table>
+				<tbody>
+					<tr>
+						<td>    
+							<div class="fieldWrapper">
+						        {{ form.health_1_good_health.errors }}
+						        <label for="id_health_1_good_health">Good general health?:</label>
+						        {{ form.health_1_good_health }}
+			    			</div>
+			    		</td>
+			    	</tr>
+			    	<tr>
+						<td>
+						    <div class="fieldWrapper">
+						        {{ form.health_1_details.errors }}
+						        <label for="id_health_1_details">If No, details:</label>
+						        {{ form.health_1_details }}
+			    			</div>
+						</td>	    		
+			    	</tr>
+				
+				</tbody>
+			</table>			
+			
+			<legend>2 - Long term health conditions</legend>	
+			
+			<table>
+				<tbody>
+					<tr>
+						<td>    
+							<div class="fieldWrapper">
+						        {{ form.health_2_diabetes.errors }}
+						        <label for="id_health_2_diabetes">Diabetes:</label>
+						        {{ form.health_2_diabetes }}
+			    			</div>
+			    		</td>	
+						<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+						<td>    
+							<div class="fieldWrapper">
+						        {{ form.health_2_epilepsy.errors }}
+						        <label for="id_health_2_epilepsy">Epilepsy:</label>
+						        {{ form.health_2_epilepsy }}
+			    			</div>
+			    		</td>			    		
+						<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+						<td>    
+							<div class="fieldWrapper">
+						        {{ form.health_2_asthma.errors }}
+						        <label for="id_health_2_asthma">Asthma:</label>
+						        {{ form.health_2_asthma }}
+			    			</div>
+			    		</td>			    		
+			    	</tr>		
+
+					<tr>
+						<td>    
+							<div class="fieldWrapper">
+						        {{ form.health_2_dyspraxia.errors }}
+						        <label for="id_health_2_dyspraxia">Dyspraxia:</label>
+						        {{ form.health_2_dyspraxia }}
+			    			</div>
+			    		</td>	
+						<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+						<td>    
+							<div class="fieldWrapper">
+						        {{ form.health_2_heart_disease.errors }}
+						        <label for="id_health_2_heart_disease">Heart disease:</label>
+						        {{ form.health_2_heart_disease }}
+			    			</div>
+			    		</td>			    		
+						<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+						<td>    
+							<div class="fieldWrapper">
+						        {{ form.health_2_other.errors }}
+						        <label for="id_health_2_other">Other:</label>
+						        {{ form.health_2_other }}
+			    			</div>
+			    		</td>			    		
+			    	</tr>
+			    	<tr>	
+						<td>    
+							<div class="fieldWrapper">
+						        {{ form.health_2_details.errors }}
+						        <label for="id_health_2_details">Details:</label>
+						        {{ form.health_2_details }}
+			    			</div>
+			    		</td>			    	
+					</tr>			    	
+				
+			    		    	
+				</tbody>
+			</table>					
+			
+			<legend>3 -  Health conditions that may affect rowing</legend>		
+			<table>
+				<tbody>
+					<tr>
+						<td>    
+							<div class="fieldWrapper">
+						        {{ form.health_3_other.errors }}
+						        <label for="id_health_3_other">Any conditions that may affect ability to row safely?:</label>
+						        {{ form.health_3_other }}
+			    			</div>
+			    		</td>
+			    	</tr>
+			    	<tr>
+						<td>
+						    <div class="fieldWrapper">
+						        {{ form.health_3_details.errors }}
+						        <label for="id_health_3_details">If Yes, details:</label>
+						        {{ form.health_3_details }}
+			    			</div>
+						</td>	    		
+			    	</tr>
+				
+				</tbody>
+			</table>		
+			
+			<legend>4 -  Other health conditions, impairment or disability</legend>		
+			<table>
+				<tbody>
+					<tr>
+						<td>    
+							<div class="fieldWrapper">
+						        {{ form.health_4_other.errors }}
+						        <label for="id_health_4_other">Any other health conditions, impairment or disability?:</label>
+						        {{ form.health_4_other }}
+			    			</div>
+			    		</td>
+			    	</tr>
+			    	<tr>
+						<td>
+						    <div class="fieldWrapper">
+						        {{ form.health_4_details.errors }}
+						        <label for="id_health_4_details">If Yes, details:</label>
+						        {{ form.health_4_details }}
+			    			</div>
+						</td>	    		
+			    	</tr>
+				
+				</tbody>
+			</table>									
 
 
 
     <p><input type="submit" value="Save" /></p>
+    </fieldset>
 </form>		
 
  
 {% endblock %}
+

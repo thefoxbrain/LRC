@@ -2,6 +2,7 @@ from django.db import models
 from django.forms import ModelForm
 from django import forms
 import django_filters
+import datetime
 
 from members.models import Member
 
@@ -30,9 +31,12 @@ class Payment(models.Model):
     def __unicode__(self):
         return u'%s' % (self.member)
     
+  
 class PaymentForm(ModelForm):
-    payment_note = forms.CharField(widget=forms.Textarea)
-    payment_date = forms.DateInput()
+    payment_note = forms.CharField(widget=forms.Textarea,required=False)
+    payment_date = forms.DateField(initial=datetime.date.today)
+    amount = forms.CharField()
+        
     class Meta:
         model = Payment
         fields = ['member', 'payment_date','amount','payment_type','payment_note']
@@ -43,9 +47,11 @@ class PaymentForm(ModelForm):
         self.fields['payment_note']        
         
 class PaymentFilter(django_filters.FilterSet):
+    member = django_filters.ModelChoiceFilter(queryset=Payment.objects.order_by('member')) 
     payment_type = django_filters.ChoiceFilter(choices=FILTER_PAYMENTTYPE_CHOICES, label='Payment Type')
         
     class Meta:
         model = Payment
-        fields = ['payment_date', 'member','payment_type']
+        fields = ['member','payment_type']
+        order_by = ('member')
         
