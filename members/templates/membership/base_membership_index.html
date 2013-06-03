@@ -4,28 +4,38 @@
 
 {% block active_membership %}active{% endblock %}
 
-{% block title %}List of Payments{% endblock %}
+{% block title %}Membership{% endblock %}
 
 {% block content %}
 
+<script>
+$(function(){
+  $("#myTable").tablesorter();
+});
+</script>
 
 <h3>Membership Types</h3>
 {% if membership_list %}
 
 {% autopaginate membership_list %}
-<table class="table table-hover">
-	<tr>
-		<th>Name</th>
-		<th>Cost</th>
-		<th>Members</th>
-	</tr>
-{% for membership in membership_list %}
-	<tr>
-		<td>{{ membership.name }}</td>
-		<td>{{ membership.cost }}</td>
-			<td><a href="/member/?membership_type={{ membership.id }}"><img src="{{ STATIC_URL }}people.png" alt="Payment History" width="24" length="24"> ( {{ membership.types.count }} )</a></td>
-</tr>
-{% endfor %}
+<table id="myTable" class="table tablesorter">
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Cost</th>
+			<th>Members</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for membership in membership_list %}
+		<tr>
+			<td>{{ membership.name }}</td>
+			<td>{{ membership.cost }}</td>
+				<td><a href="/member/?membership_type={{ membership.id }}"><img src="{{ STATIC_URL }}people.png" alt="Payment History" width="24" length="24"> ( {{ membership.types.count }} )</a></td>
+		</tr>
+		{% endfor %}
+	</tbody>
+		
 
  </table>
  

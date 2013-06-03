@@ -106,6 +106,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'pagination.middleware.PaginationMiddleware',
+    'django_sorting.middleware.SortingMiddleware',
     # Uncomment the next line for simple clickjacking protection:
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
@@ -141,7 +142,9 @@ INSTALLED_APPS = (
     # 'django_extensions',
     'pagination',    
     'django_filters',
-    'xlwt'
+    'xlwt',
+    # 'django_sorting',
+    'sorter',
 )
 
 # A sample logging configuration. The only tangible logging
@@ -188,3 +191,7 @@ CRISPY_TEMPLATE_PACK = 'bootstrap'
 DATETIME_FORMAT = (
     '%d/%m/%Y',                 
 )
+
+SORTER_ALLOWED_CRITERIA = {
+    'sort': ['name'],
+}

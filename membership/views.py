@@ -3,7 +3,8 @@ from django.shortcuts import render, get_object_or_404
 from membership.models import MembershipType
 
 def membership_index(request):
-    membership_list = MembershipType.objects.all().order_by('-cost')
+    # membership_list = MembershipType.objects.all().order_by('-cost')
+    membership_list = MembershipType.objects.all()
     context = {'membership_list': membership_list}
     return render(request, 'membership/base_membership_index.html', context)
 

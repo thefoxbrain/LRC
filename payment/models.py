@@ -33,6 +33,7 @@ class Payment(models.Model):
     
   
 class PaymentForm(ModelForm):
+    member = forms.ModelChoiceField(queryset=Member.objects.order_by('full_name'))
     payment_note = forms.CharField(widget=forms.Textarea,required=False)
     payment_date = forms.DateField(initial=datetime.date.today)
     amount = forms.CharField()
@@ -47,7 +48,9 @@ class PaymentForm(ModelForm):
         self.fields['payment_note']        
         
 class PaymentFilter(django_filters.FilterSet):
-    member = django_filters.ModelChoiceFilter(queryset=Payment.objects.order_by('member')) 
+    # member = forms.ModelChoiceField(queryset=Member.objects.order_by('full_name'))
+    # member = django_filters.ModelChoiceFilter(queryset=Payment.objects.order_by('-member'))
+    member = django_filters.ModelChoiceFilter(queryset=Member.objects.order_by('full_name'))
     payment_type = django_filters.ChoiceFilter(choices=FILTER_PAYMENTTYPE_CHOICES, label='Payment Type')
         
     class Meta:
