@@ -2,6 +2,8 @@ from django.shortcuts import render, get_object_or_404, redirect,render_to_respo
 
 from payment.models import Payment,PaymentForm,PaymentFilter
 
+from members.models import Member
+
 def pay_index(request):
     f = PaymentFilter(request.GET, queryset=Payment.objects.all().order_by('-payment_date'))
     # return render_to_response('payment/base_pay_index.html', {'payment_list': f})
@@ -22,8 +24,13 @@ def pay_delete(request, payment_id):
     return redirect('/payment/')
 
 
-def create_payment(request):
-    form = PaymentForm(request.POST or None)
+def create_payment(request,member_id):
+    if member_id == '0':
+        data = {}
+    else:
+        member = Member.objects.get(id=member_id)
+        data = {'member': member.id,'payment_type':member.payment_method}
+    form = PaymentForm(request.POST or None,initial=data)
     if form.is_valid():
         form.save()
         # pay_mem = Payment.objects.create()
