@@ -3,33 +3,34 @@
 <head>
 	<title>{% block title %}My amazing site{% endblock %}</title>
 	
-	
-	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" />
-	<!--	<link rel="stylesheet" type="text/css" href="/members/static/screen.css" />  -->
-	
-	 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<!-- Bootstrap -->
-	<link href="/members/static/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
-	
+	<link rel="stylesheet" href="/members/static/xtablesorter/theme.default.css">
+
 	<!-- Jquery -->
 	<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.1.js"></script>
-	<script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-		
+	
 	<!-- Tablesorter -->
 	<script type="text/javascript" src="/members/static/tablesorter/jquery.tablesorter.js"></script>
-	<script type="text/javascript" src="/members/static/tablesorter/jquery.tablesorter.widgets.js"></script>
-	
-	<!-- pager -->
 	<script type="text/javascript" src="/members/static/pager/jquery.tablesorter.pager.js"></script>
-	<link href="/members/static/pager/jquery.tablesorter.pager.css" rel="stylesheet" media="screen">
+			
+	<!-- Bootstrap -->
+	<link href="/members/static/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen"></script>
+
+	<!-- pager -->
 	
+	
+
 	<!-- LESS -->
 	<!-- <link rel="stylesheet/less" type="text/css" href="/members/static/bootstrap.less" /> -->
 	<!-- <script src="/members/static/less/less.js" type="text/javascript"></script> -->
 	
-	
 	<script type="text/javascript" src="/members/static/bootstrap/js/bootstrap.min.js"></script>
 	
+ <script type="text/javascript">
+$(function(){
+ $("#myTable").tablesorter().tablesorterPager({container: $("#pager")});
+ });
+ </script>
+
 </head>
 
 <body>

@@ -8,60 +8,52 @@
 <h3>Payments</h3>
 {% if payment_list %}
 
-<table id="PayTable" class="table tablesorter">
-	<thead>
-	  	<tr>
-			<th>Payment Date</th>
-			<th>Nember</th>
-			<th>Type</th>
-			<th>Amount</th>
-			<th>History</th>
-			<th>Edit</th>
-			<th>Delete</th>
-			<th>Note</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			{% for payment in payment_list %}
-			<td>{{ payment.payment_date }}</a></td>
-			<td><a href="/member/{{ payment.member.id }}/">{{ payment.member.first_name }} {{ payment.member.last_name }}</a></td>
-			<td>{{ payment.get_payment_type_display }}</td>
-			<td>{{ payment.amount }}</td>
-			<td><a href="/payment/?member={{ payment.member.id }}"><img src="/members/static/history.png" alt="Payment History" width="24" length="24"></a></td>
-			<td><a href="/payment/manage/{{ payment.id }}/"><img src="/members/static/edit.png" alt="Edit Member" width="24" length="24"></a></td>
-			<td><a href="/payment/delete/{{ payment.id }}/"><img src="/members/static/delete.png" alt="Delete" width="24" length="24"></a></td>
-			<td>{{ payment.payment_note }}</td>
-		</tr>
-	{% endfor %}
-	</tbody>
+<table id="myTable" class="table tablesorter">
+<thead>
+<tr>
+<th>Payment Date</th>
+<th>Nember</th>
+<th>Type</th>
+<th>Amount</th>
+<th>History</th>
+<th>Edit</th>
+<th>Delete</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+{% for payment in payment_list %}
+<td>{{ payment.payment_date }}</a></td>
+<td><a href="/member/{{ payment.member.id }}/">{{ payment.member.first_name }} {{ payment.member.last_name }}</a></td>
+<td>{{ payment.get_payment_type_display }}</td>
+<td>{{ payment.amount }}</td>
+<td><a href="/payment/?member={{ payment.member.id }}"><img src="/members/static/history.png" alt="Payment History" width="24" length="24"></a></td>
+<td><a href="/payment/manage/{{ payment.id }}/"><img src="/members/static/edit.png" alt="Edit Member" width="24" length="24"></a></td>
+<td><a href="/payment/delete/{{ payment.id }}/"><img src="/members/static/delete.png" alt="Delete" width="24" length="24"></a></td>
+<td>{{ payment.payment_note }}</td>
+</tr>
+{% endfor %}
+</tbody>
 </table>
 
 <!-- pager -->
-<div id="tablesorter-pager" class="tablesorter-pager">
+<div id="pager" class="pager">
   <form>
     <img src="/members/static/pager/icons/first.png" class="first"/>
     <img src="/members/static/pager/icons/prev.png" class="prev"/>
-    <span class="PayTable"></span> <!-- this can be any element, including an input -->
+    <span class="pagedisplay"></span> <!-- this can be any element, including an input -->
     <img src="/members/static/pager/icons/next.png" class="next"/>
     <img src="/members/static/pager/icons/last.png" class="last"/>
-    <select class="pagesize">
+    <select class="input-mini pagesize">
       <option selected="selected" value="10">10</option>
       <option value="20">20</option>
       <option value="30">30</option>
       <option value="40">40</option>
     </select>
-    <select class="gotoPage" title="Select page number"></select>
+    <select class="input-mini gotoPage" title="Select page number"></select>
   </form>
 </div>
-
-<script type="text/javascript">
-   $(document).ready(function() {
-      $("PayTable")
-      .tablesorter()
-      .tablesorterPager({container: $("#pager")});
-   });
-</script>
 
 {% else %}
 <p>No payments are available.</p>
@@ -70,17 +62,17 @@
 
 {% block sidebar2 %}
     <form action="" method="get" class="input-medium">
-		<h4 class="text-left">Member</h4>
-			{{ payment_list.form.member }}
-			<input class="btn btn-success" type="submit" value="Apply" />
+<h4 class="text-left">Member</h4>
+{{ payment_list.form.member }}
+<input class="btn btn-success" type="submit" value="Apply" />
     </form>
     
     <form action="" method="get" class="input-medium">
-		<h4 class="text-left">Filter</h4>
-			Payment Type<br>
-			{{ payment_list.form.payment_type }}
-			<input class="btn btn-success" type="submit" value="Apply" />
-    </form>    
+<h4 class="text-left">Filter</h4>
+Payment Type<br>
+{{ payment_list.form.payment_type }}
+<input class="btn btn-success" type="submit" value="Apply" />
+    </form>
 <a class="btn btn-success" href="/payment/">Show All</a>
 
 {% endblock sidebar2%}
