@@ -144,7 +144,8 @@ INSTALLED_APPS = (
     'django_filters',
     'xlwt',
     # 'django_sorting',
-    'sorter',
+    # 'sorter',
+    'django_nvd3',
 )
 
 # A sample logging configuration. The only tangible logging

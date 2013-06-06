@@ -8,16 +8,17 @@
 	<!-- Jquery -->
 	<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.1.js"></script>
 	
-	<!-- Tablesorter -->
+	<!-- Tablesorter & Pager -->
 	<script type="text/javascript" src="/members/static/tablesorter/jquery.tablesorter.js"></script>
 	<script type="text/javascript" src="/members/static/pager/jquery.tablesorter.pager.js"></script>
 			
 	<!-- Bootstrap -->
 	<link href="/members/static/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen"></script>
 
-	<!-- pager -->
-	
-	
+	<!-- NVD3 -->
+	<script type="text/javascript" src="/members/static/nvd3/js/d3.v2.min.js"></script>
+	<script type="text/javascript" src="/members/static/nvd3/js/nv.d3.min.js"></script>	
+	<link href="/members/static/nvd3/js/nv.d3.css" rel="stylesheet" media="screen">
 
 	<!-- LESS -->
 	<!-- <link rel="stylesheet/less" type="text/css" href="/members/static/bootstrap.less" /> -->
@@ -30,6 +31,10 @@ $(function(){
  $("#myTable").tablesorter().tablesorterPager({container: $("#pager")});
  });
  </script>
+ 
+{% include_nvd3jscss %}
+{% load_chart charttype chartdata "piechart_container" %}
+
 
 </head>
 
