@@ -8,6 +8,8 @@
 
 <h3>Add \ Edit Payment</h3>
 
+
+
 <form action="" method="POST">{% csrf_token %}
 
 {{ form.non_field_errors }}
@@ -25,8 +27,9 @@
 			<td>
 			    <div class="fieldWrapper">
 			        {{ form.payment_date.errors }}
-			        <label class="datepicker" for="id_payment_date">Date:</label>
-			        {{ form.payment_date }}
+			        <label for="id_payment_date">Date:</label>
+			        <input type="text" id="datepicker" {{ form.payment_date }}
+			        
     			</div>
 			</td>
 		</tr>

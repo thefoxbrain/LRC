@@ -1,3 +1,4 @@
+{% load nvd3_tags %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +7,9 @@
 	<link rel="stylesheet" href="/members/static/xtablesorter/theme.default.css">
 
 	<!-- Jquery -->
-	<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.1.js"></script>
+ 	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 	
 	<!-- Tablesorter & Pager -->
 	<script type="text/javascript" src="/members/static/tablesorter/jquery.tablesorter.js"></script>
@@ -31,6 +34,12 @@ $(function(){
  $("#myTable").tablesorter().tablesorterPager({container: $("#pager")});
  });
  </script>
+ 
+   <script>
+$(function() {
+$( "#datepicker" ).datepicker();
+});
+</script>
  
 {% include_nvd3jscss %}
 {% load_chart charttype chartdata "piechart_container" %}
