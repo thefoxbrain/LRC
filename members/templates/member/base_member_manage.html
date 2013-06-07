@@ -30,6 +30,14 @@
 						        {{ form.gender }}
 			    			</div>
 						</td>
+						<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+						<td>    
+							<div class="fieldWrapper">
+						        {{ form.member_status.errors }}
+						        <label for="id_member_status">Status:</label>
+						        {{ form.member_status }}
+			    			</div>
+			    		</td>						
 					</tr>
 			
 					<tr>
@@ -71,8 +79,12 @@
 							<div class="fieldWrapper">
 						        {{ form.date_of_birth.errors }}
 						        <label for="id_date_of_birth">Date of Birth:</label>
-						        {{ form.date_of_birth }}
-			    			</div>			
+						     	<div class="input-append">
+			        				<span class="add-on"><i class="icon-calendar"></i></span>
+						        	<input type="text" class="datepicker" {{ form.date_of_birth }}
+						        </div>
+			    			</div>		
+			    		</td>	
 					</tr>
 
 					<tr>
@@ -203,8 +215,10 @@
 						    <div class="fieldWrapper">
 						        {{ form.start_date.errors }}
 						        <label for="id_start_date">Start Date:</label>
-						        <input type="text" id="datepicker" {{ form.start_date }}
-			    			</div>
+						     	<div class="input-append">
+			        				<span class="add-on"><i class="icon-calendar"></i></span>
+						        	<input type="text" class="datepicker" {{ form.start_date }}
+						        </div>
 						</td>
 						<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 						<td>

@@ -30,7 +30,7 @@ $(function(){
 		{% for membership in membership_list %}
 		<tr>
 			<td>{{ membership.name }}</td>
-			<td>{{ membership.cost }}</td>
+			<td>&pound;{{ membership.cost }}</td>
 				<td><a href="/member/?membership_type={{ membership.id }}"><img src="{{ STATIC_URL }}people.png" alt="Payment History" width="24" length="24"> ( {{ membership.types.count }} )</a></td>
 		</tr>
 		{% endfor %}

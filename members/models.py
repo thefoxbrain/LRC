@@ -13,7 +13,14 @@ FILTER_PAYMENTMETHOD_CHOICES = (
     ('C', 'Cash'),
     ('B', 'Bank Transfer'),
     )
-    
+
+FILTER_STATUS_CHOICES = (
+    ('', 'All'),
+    ('A', 'Active'),
+    ('I', 'Inactive'),
+    ('X', 'Ex-Member'),
+    )
+
 class Member(models.Model):
     # Personal Information
     # photo = models.ImageField(upload_to='members_photos')
@@ -97,6 +104,12 @@ class Member(models.Model):
     
     payment_method = models.CharField(max_length=1, choices=PAYMENTMETHOD_CHOICES,blank=True)
     full_name = models.CharField(max_length=200,  blank=True)
+    STATUS_CHOICES = (
+        ('A', 'Active'),
+        ('I', 'Inactive'),
+        ('X', 'Ex-Member'),
+    )
+    member_status = models.CharField(max_length=1, choices=STATUS_CHOICES)    
     
     def __unicode__(self):
         return u'%s %s' % (self.first_name, self.last_name)
@@ -108,10 +121,11 @@ class Member(models.Model):
 class MemberFilter(django_filters.FilterSet):
     full_name = django_filters.AllValuesFilter()
     payment_method = django_filters.ChoiceFilter(choices=FILTER_PAYMENTMETHOD_CHOICES, label='Payment Method')
+    member_status = django_filters.ChoiceFilter(choices=FILTER_STATUS_CHOICES, label='Member Status')
         
     class Meta:
         model = Member
-        fields = ['full_name', 'payment_method', 'membership_type']
+        fields = ['full_name', 'payment_method', 'membership_type','member_status']
         
     def __init__(self, *args, **kwargs):
                 super(MemberFilter, self).__init__(*args, **kwargs)

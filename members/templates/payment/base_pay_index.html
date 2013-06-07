@@ -74,7 +74,10 @@
 Payment Type<br>
 <select class="input-medium" {{ payment_list.form.payment_type }}
 From Date<br>
-<input type="text" class="input-small" id="datepicker" {{ payment_list.form.payment_date }}
+<div class="input-append">
+	<span class="add-on"><i class="icon-calendar"></i></span>
+    <input type="text" class="input-small datepicker"  {{ payment_list.form.payment_date }}
+</div>
 <input class="btn btn-success" type="submit" value="Apply" />
     </form>
 <a class="btn btn-success" href="/payment/">Show All</a>

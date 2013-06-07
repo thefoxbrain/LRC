@@ -35,9 +35,16 @@ $(function(){
  });
  </script>
  
-   <script>
+ <script>
 $(function() {
-$( "#datepicker" ).datepicker({ dateFormat: "dd/mm/yy" });
+$( ".datepicker" ).datepicker({
+dateFormat: "dd/mm/yy",
+yearRange: "1900:2013",
+changeMonth: true,
+changeYear: true,
+showOtherMonths: true,
+selectOtherMonths: true
+});
 });
 </script>
  
