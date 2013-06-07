@@ -65,14 +65,16 @@
 {% block sidebar2 %}
     <form action="" method="get" class="input-medium">
 <h4 class="text-left">Member</h4>
-{{ payment_list.form.member }}
+<select class="input-medium" {{ payment_list.form.member }}
 <input class="btn btn-success" type="submit" value="Apply" />
     </form>
     
     <form action="" method="get" class="input-medium">
 <h4 class="text-left">Filter</h4>
 Payment Type<br>
-{{ payment_list.form.payment_type }}
+<select class="input-medium" {{ payment_list.form.payment_type }}
+From Date<br>
+<input type="text" class="input-small" id="datepicker" {{ payment_list.form.payment_date }}
 <input class="btn btn-success" type="submit" value="Apply" />
     </form>
 <a class="btn btn-success" href="/payment/">Show All</a>

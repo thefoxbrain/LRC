@@ -48,13 +48,12 @@ class PaymentForm(ModelForm):
         self.fields['payment_note']        
         
 class PaymentFilter(django_filters.FilterSet):
-    # member = forms.ModelChoiceField(queryset=Member.objects.order_by('full_name'))
-    # member = django_filters.ModelChoiceFilter(queryset=Payment.objects.order_by('-member'))
+    payment_date = django_filters.DateFilter(lookup_type='gt')
     member = django_filters.ModelChoiceFilter(queryset=Member.objects.order_by('full_name'))
     payment_type = django_filters.ChoiceFilter(choices=FILTER_PAYMENTTYPE_CHOICES, label='Payment Type')
         
     class Meta:
         model = Payment
-        fields = ['member','payment_type']
+        fields = ['member','payment_type','payment_date']
         order_by = ('member')
         

@@ -37,7 +37,7 @@ $(function(){
  
    <script>
 $(function() {
-$( "#datepicker" ).datepicker();
+$( "#datepicker" ).datepicker({ dateFormat: "dd/mm/yy" });
 });
 </script>
  
@@ -62,7 +62,7 @@ $( "#datepicker" ).datepicker();
     </ul>
 
 				<div class="row">
-					<div class="span3">
+					<div class="span2.5">
 						{% block sidebar %}
 							<h4>Add New</h4>
 							<ul class="nav nav-pills nav-stacked">	

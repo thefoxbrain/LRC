@@ -28,8 +28,10 @@
 			    <div class="fieldWrapper">
 			        {{ form.payment_date.errors }}
 			        <label for="id_payment_date">Date:</label>
-			        <input type="text" id="datepicker" {{ form.payment_date }}
-			        
+						<div class="input-append">
+			        		<span class="add-on"><i class="icon-calendar"></i></span>
+			        		<input type="text" class="input-medium" id="datepicker" {{ form.payment_date }}
+						</div>
     			</div>
 			</td>
 		</tr>

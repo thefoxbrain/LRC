@@ -63,7 +63,7 @@
 {% block sidebar2 %}
     <form action="" method="get" class="input-medium">
 		<h4 class="text-left">Member</h4>
-			{{ member_index.form.full_name }}
+			<select class="input-medium" {{ member_index.form.full_name }}
 		<input class="btn btn-success" type="submit" value="Apply" />
 	</form>
 
@@ -71,9 +71,9 @@
 		<h4 class="text-left">Filter</h4>
 
 			Member Type<br>
-			{{ member_index.form.membership_type }}
+			<select class="input-medium" {{ member_index.form.membership_type }}
 			Payment Method<br>
-			{{ member_index.form.payment_method }}
+			<select class="input-medium" {{ member_index.form.payment_method }}
 		<input class="btn btn-success" type="submit" value="Apply" />
 	</form>
 	<a class="btn btn-success" href="/member/">Show All</a>
