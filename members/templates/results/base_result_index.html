@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block active_payments %}active{% endblock %}
+
+{% block title %}List of Payments{% endblock %}
+
+{% block content %}
+<h3>Payments</h3>
+{% if result_list %}
+
+<table id="myTable" class="table tablesorter">
+<thead>
+<tr>
+<th>Event</th>
+<th>Date</th>
+<th>Class</th>
+<th>Status</th>
+<th>Boat</th>
+<th>Crew</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+{% for result in result_list %}
+<td>{{ result.event }}</a></td>
+<td>{{ result.event.event_date }}</a></td>
+<td>{{ result.get_boat_class_display }}</a></td>
+<td>{{ result.get_boat_status_display }}</a></td>
+<td>{{ result.get_boat_category_display }}</a></td>
+<td><a href="/results/{{ result.id }}"><img src="{{ STATIC_URL }}icons/people.png" width="24" length="24"></a></td>
+
+</tr>
+{% endfor %}
+</tbody>
+</table>
+
+<!-- pager -->
+<div id="pager" class="pager">
+  <form>
+    <img src="/members/static/pager/icons/first.png" class="first"/>
+    <img src="/members/static/pager/icons/prev.png" class="prev"/>
+    <span class="pagedisplay"></span> <!-- this can be any element, including an input -->
+    <img src="/members/static/pager/icons/next.png" class="next"/>
+    <img src="/members/static/pager/icons/last.png" class="last"/>
+    <select class="input-mini pagesize">
+      <option selected="selected" value="10">10</option>
+      <option value="20">20</option>
+      <option value="30">30</option>
+      <option value="40">40</option>
+    </select>
+    <select class="input-mini gotoPage" title="Select page number"></select>
+  </form>
+</div>
+
+{% else %}
+<p>No results are available.</p>
+{% endif %}
+{% endblock %}
+
+{% block sidebar2 %}
+    <form action="" method="get" class="input-medium">
+<h4 class="text-left">Event</h4>
+<select class="input-medium" {{ result_list.form.event }}
+<input class="btn btn-success" type="submit" value="Apply" />
+    </form>
+<a class="btn btn-success" href="/results/">Show All</a>
+
+{% endblock sidebar2%}

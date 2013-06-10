@@ -138,6 +138,7 @@ INSTALLED_APPS = (
     'members',
     'payment',
     'membership',
+    'results',
     # 'crispy_forms',
     # 'django_extensions',
     'pagination',    

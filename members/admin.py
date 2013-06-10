@@ -5,12 +5,19 @@ from django.contrib import admin
 from members.models import Member
 from members.models import MembershipType
 from payment.models import Payment
+from results.models import Event
+from results.models import Result
 
 class PaymentInline(admin.TabularInline):
     model = Payment
     extra = 1
     fields = ('amount','payment_type','payment_date')
     ordering = ['-payment_date']
+    
+class ResultInline(admin.TabularInline):
+    model = Result
+    extra = 1
+    fields = ('event','boat_class','boat_status','boat_category','crew_1','crew_2','crew_3','crew_4','crew_5','crew_6','crew_7','crew_8','cox')
 
 class MemberAdmin(admin.ModelAdmin):
     fieldsets = [
@@ -81,6 +88,48 @@ class MemberAdmin(admin.ModelAdmin):
 admin.site.register(Member, MemberAdmin)
 
 admin.site.register(MembershipType)
+
+class EventAdmin(admin.ModelAdmin):
+        fieldsets = [
+        ('Event', {'fields': [
+                                             # 'photo',
+                                             'event_name',
+                                             ]}),
+        ('Details', {'fields': [
+                                             'event_type',
+                                             'event_date',
+                                             ]}),                 
+                     ]
+        list_display = ('event_name', 'event_type','event_date')
+        list_filter = ['event_name', 'event_type','event_date']
+        ordering = ['-event_date']
+        inlines = [ResultInline]
+
+admin.site.register(Event,EventAdmin)
+
+class ResultAdmin(admin.ModelAdmin):
+        fieldsets = [
+        ('Event', {'fields': [
+                                             # 'photo',
+                                             'event',
+                                             ('boat_status', 'boat_category'), 
+                                             ]}),
+        ('Crew', {'fields': [
+                                             'crew_1',
+                                             'crew_2',
+                                             'crew_3',
+                                             'crew_4',
+                                             'crew_5',
+                                             'crew_6',
+                                             'crew_7',
+                                             'crew_8',
+                                             'cox',
+                                             ]}),                 
+                     ]
+        list_display = ('event', 'boat_status','boat_category')
+
+
+admin.site.register(Result,ResultAdmin)
 
 class PaymentAdmin(admin.ModelAdmin):
     list_display = ('member', 'amount','payment_type','payment_date')

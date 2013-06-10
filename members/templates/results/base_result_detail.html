@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block active_payments %}active{% endblock %}
+
+{% block title %}Payment Detail{% endblock %}
+
+{% block content %}
+
+<h3>{{ result.event }}</h3>
+<h4>{{ result.get_boat_class_display }} {{ get_result.boat_status_display }} {{ result.get_boat_category_display }}</h4>
+  
+
+<table>
+	<thead>
+		<tr>
+			<th>Position</th>
+			<th>Nember</th>
+		</tr>
+	</thead>
+	<tbody>
+	    <tr>
+	      <td>1</td>
+	      <td><a href="/member/{{ result.crew_1.id }}/">{{ result.crew_1|default_if_none:"" }}</a></td>
+	    </tr>
+	    <tr>
+	      <td>2</td>
+	      <td><a href="/member/{{ result.crew_2.id }}/">{{ result.crew_2|default_if_none:"" }}</a></td>
+	    </tr>
+	    <tr>
+	      <td>3</td>
+	      <td><a href="/member/{{ result.crew_3.id }}/">{{ result.crew_3|default_if_none:"" }}</a></td>
+	    </tr>
+	    <tr>
+	      <td>4</td>
+	      <td><a href="/member/{{ result.crew_4.id }}/">{{ result.crew_4|default_if_none:"" }}</a></td>
+	    </tr>
+	    <tr>
+	      <td>5</td>
+	      <td><a href="/member/{{ result.crew_5.id }}/">{{ result.crew_5|default_if_none:"" }}</a></td>
+	    </tr>
+	    <tr>
+	      <td>6</td>
+	      <td><a href="/member/{{ result.crew_6.id }}/">{{ result.crew_6|default_if_none:"" }}</a></td>
+	    </tr>
+	    <tr>
+	      <td>7</td>
+	      <td><a href="/member/{{ result.crew_7.id }}/">{{ result.crew_7|default_if_none:"" }}</a></td>
+	    </tr>
+	    <tr>
+	      <td>8</td>
+	      <td><a href="/member/{{ result.crew_8.id }}/">{{ result.crew_8|default_if_none:"" }}</a></td>
+	    </tr>
+	    <tr>
+	      <td>Cox</td>
+	      <td><a href="/member/{{ result.cox.id }}/">{{ result.cox|default_if_none:"" }}</a></td>
+	    </tr>
+	 </tbody>
+ </table>
+  
+<br>
+<br>
+<br>
+{% endblock %}

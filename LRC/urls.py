@@ -16,5 +16,6 @@ urlpatterns = patterns('',
     url(r'^member/', include('members.urls')),
     url(r'^payment/', include('payment.urls')),
     url(r'^membership/', include('membership.urls')),
+    url(r'^results/', include('results.urls')),
     url(r'^admin/', include(admin.site.urls)),
 )
