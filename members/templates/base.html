@@ -7,9 +7,9 @@
 	<link rel="stylesheet" href="/members/static/xtablesorter/theme.default.css">
 
 	<!-- Jquery -->
- 	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
-	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+ 	<link rel="stylesheet" href="/members/static/jquery-ui/jquery-ui.css" />
+	<script src="/members/static/jquery/jquery-1.10.1.js"></script>
+	<script src="/members/static/jquery-ui/jquery-ui.js"></script>
 	
 	<!-- Tablesorter & Pager -->
 	<script type="text/javascript" src="/members/static/tablesorter/jquery.tablesorter.js"></script>
@@ -20,8 +20,8 @@
 
 	<!-- NVD3 -->
 	<script type="text/javascript" src="/members/static/nvd3/js/d3.v2.min.js"></script>
-	<script type="text/javascript" src="/members/static/nvd3/js/nv.d3.min.js"></script>	
-	<link href="/members/static/nvd3/js/nv.d3.css" rel="stylesheet" media="screen">
+	<script type="text/javascript" src="/members/static/nvd3/js/nv.d3.min.js"></script>
+	<link href="/members/static/nvd3/css/nv.d3.css" rel="stylesheet" media="screen">
 
 	<!-- LESS -->
 	<!-- <link rel="stylesheet/less" type="text/css" href="/members/static/bootstrap.less" /> -->
@@ -47,6 +47,12 @@ selectOtherMonths: true
 });
 });
 </script>
+
+ <script>
+$(function() {
+$( "#accordion" ).accordion();
+});
+</script>
  
 {% include_nvd3jscss %}
 {% load_chart charttype chartdata "piechart_container" %}
@@ -68,6 +74,7 @@ selectOtherMonths: true
 		<li><a href="">Bank Details</a></li>
 		<li><a href="">Maintenance</a></li>
 		<li><a href="">Equipment</a></li>
+		<li><a href="/admin/">Admin</a></li>
     </ul>
 
 				<div class="row">

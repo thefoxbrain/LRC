@@ -1,37 +1,49 @@
 {% extends "base.html" %}
 
-{% block active_payments %}active{% endblock %}
+{% block active_results %}active{% endblock %}
 
 {% block title %}List of Payments{% endblock %}
 
 {% block content %}
-<h3>Payments</h3>
+<h3>Results</h3>
 {% if result_list %}
 
 <table id="myTable" class="table tablesorter">
-<thead>
-<tr>
-<th>Event</th>
-<th>Date</th>
-<th>Class</th>
-<th>Status</th>
-<th>Boat</th>
-<th>Crew</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-{% for result in result_list %}
-<td>{{ result.event }}</a></td>
-<td>{{ result.event.event_date }}</a></td>
-<td>{{ result.get_boat_class_display }}</a></td>
-<td>{{ result.get_boat_status_display }}</a></td>
-<td>{{ result.get_boat_category_display }}</a></td>
-<td><a href="/results/{{ result.id }}"><img src="{{ STATIC_URL }}icons/people.png" width="24" length="24"></a></td>
-
-</tr>
-{% endfor %}
-</tbody>
+	<thead>
+		<tr>
+			<th>Event</th>
+			<th>Date</th>
+			<th>Class</th>
+			<th>Status</th>
+			<th>Boat</th>
+			<th>Crew</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			{% for result in result_list %}
+			<td><a href="/results/event/?event_name={{ result.event.id }}">{{ result.event }}</a></td>
+			<td>{{ result.event.event_date }}</a></td>
+			<td>{{ result.get_boat_class_display }}</a></td>
+			<td>{{ result.get_boat_status_display }}</a></td>
+			<td>{{ result.get_boat_category_display }}</a></td>
+			<td width="150"><a href="/results/{{ result.id }}"><img src="{{ STATIC_URL }}icons/people.png" width="24" length="24"></a></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td>
+			    {% for crew_member in result.crew_members.all %}
+				    <a href="/member/{{ crew_member.id }}/">{{ crew_member.full_name }}</a><a href="/results/?crew_members={{ crew_member.id }}"><img src="{{ STATIC_URL }}icons/wins.png" alt="Wins History" width="24" length="24"></a></br>
+				{% endfor %}
+				<a href="/member/{{ result.cox.id }}/">{{ result.cox|default_if_none:"" }}</a> (cox)
+			</td>
+		</tr>
+	{% endfor %}
+	</tbody>
 </table>
 
 <!-- pager -->
@@ -59,10 +71,15 @@
 
 {% block sidebar2 %}
     <form action="" method="get" class="input-medium">
-<h4 class="text-left">Event</h4>
-<select class="input-medium" {{ result_list.form.event }}
-<input class="btn btn-success" type="submit" value="Apply" />
-    </form>
+<h4 class="text-left">Member</h4>
+<select class="input-medium" {{ result_list.form.crew_members }}
+	<h4 class="text-left">Filter</h4>
+	Event<br>
+	<select class="input-medium" {{ result_list.form.event }}
+	<input class="btn btn-success" type="submit" value="Apply" />
+	
+</form>    
+    
 <a class="btn btn-success" href="/results/">Show All</a>
 
 {% endblock sidebar2%}

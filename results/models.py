@@ -87,12 +87,14 @@ class Result(models.Model):
     crew_7 = models.ForeignKey(Member, related_name="crew_7", null=True, blank=True)
     crew_8 = models.ForeignKey(Member, related_name="crew_8", null=True, blank=True)
     cox = models.ForeignKey(Member, related_name="cox",null=True,  blank=True)
+    crew_members = models.ManyToManyField(Member) 
 
 class ResultFilter(django_filters.FilterSet):
     event = django_filters.ModelChoiceFilter(queryset=Event.objects.order_by('-event_date'))
+    crew_members = django_filters.ModelChoiceFilter(queryset=Member.objects.order_by('full_name')) 
         
     class Meta:
         model = Result
-        fields = ['event']
+        fields = ['event','crew_members']
         
     

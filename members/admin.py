@@ -17,7 +17,7 @@ class PaymentInline(admin.TabularInline):
 class ResultInline(admin.TabularInline):
     model = Result
     extra = 1
-    fields = ('event','boat_class','boat_status','boat_category','crew_1','crew_2','crew_3','crew_4','crew_5','crew_6','crew_7','crew_8','cox')
+    fields = ('event','boat_class','boat_status','boat_category','crew_members','crew_1','cox')
 
 class MemberAdmin(admin.ModelAdmin):
     fieldsets = [
@@ -112,9 +112,13 @@ class ResultAdmin(admin.ModelAdmin):
         ('Event', {'fields': [
                                              # 'photo',
                                              'event',
-                                             ('boat_status', 'boat_category'), 
+                                             ('boat_class','boat_status', 'boat_category'), 
                                              ]}),
         ('Crew', {'fields': [
+                                             # 'photo',
+                                             'crew_members'
+                                             ]}),
+        ('Crew Breakdown', {'fields': [
                                              'crew_1',
                                              'crew_2',
                                              'crew_3',
@@ -126,7 +130,7 @@ class ResultAdmin(admin.ModelAdmin):
                                              'cox',
                                              ]}),                 
                      ]
-        list_display = ('event', 'boat_status','boat_category')
+        list_display = ('event', 'boat_class','boat_status','boat_category')
 
 
 admin.site.register(Result,ResultAdmin)

@@ -1,11 +1,11 @@
 {% extends "base.html" %}
 
-{% block active_payments %}active{% endblock %}
+{% block active_events %}active{% endblock %}
 
-{% block title %}List of Payments{% endblock %}
+{% block title %}Events{% endblock %}
 
 {% block content %}
-<h3>Payments</h3>
+<h3>Events</h3>
 {% if event_list %}
 
 <table id="myTable" class="table tablesorter">
@@ -20,7 +20,7 @@
 <tbody>
 <tr>
 {% for event in event_list %}
-<td>{{ event.event_name }}</a></td>
+<td><a href="/results/event/?event_name={{ event.id }}">{{ event.event_name }}</a></td>
 <td>{{ event.event_date }}</a></td>
 <td>{{ event.get_event_type_display }}</a></td>
 <td><a href="/results/?event={{ event.id }}"><img src="{{ STATIC_URL }}icons/wins.png" alt="Payment History" width="24" length="24"> ( {{ event.event.count }} )</a></td>

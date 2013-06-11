@@ -18,6 +18,7 @@
 			<th>Membership</th>
 			<th>Payments</th>
 			<th>Method</th>
+			<th>Wins</th>
 			<th>Edit</th>
 		</tr>
 	<thead>
@@ -29,6 +30,7 @@
 			<td><a href="/member/?membership_type={{ member.membership_type.id }}">{{ member.membership_type }}</a></td>
 			<td><a href="/payment/?member={{ member.id }}"><img src="/members/static/icons/history.png" alt="Payment History" width="24" length="24"> ( {{ member.payments.count }} )</a></td>
 			<td>{{ member.get_payment_method_display }}</td>
+			<td><a href="/results/?crew_members={{ member.id }}/"><img src="/members/static/icons/wins.png" alt="Edit Member" width="24" length="24"></a></td>
 			<td><a href="/member/manage/{{ member.id }}/"><img src="/members/static/icons/edit.png" alt="Edit Member" width="24" length="24"></a></td>
 		</tr>
 	{% endfor %}

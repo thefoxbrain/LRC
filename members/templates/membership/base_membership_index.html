@@ -1,7 +1,5 @@
 {% extends "base.html" %}
 
-{% load pagination_tags %}
-
 {% block active_membership %}active{% endblock %}
 
 {% block title %}Membership{% endblock %}
@@ -17,7 +15,6 @@ $(function(){
 <h3>Membership Types</h3>
 {% if membership_list %}
 
-{% autopaginate membership_list %}
 <table id="myTable" class="table tablesorter">
 	<thead>
 		<tr>
@@ -39,8 +36,7 @@ $(function(){
 
  </table>
  
- {% paginate %}
-{% else %}
+ {% else %}
 <p>No payments are available.</p>
 {% endif %}
 {% endblock %}

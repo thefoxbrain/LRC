@@ -19,7 +19,6 @@
 <th>Create</th>
 <th>Edit</th>
 <th>Delete</th>
-<th>Note</th>
 </tr>
 </thead>
 <tbody>
@@ -33,7 +32,6 @@
 <td><a href="/payment/create/{{ payment.member.id }}/"><img src="/members/static/icons/create.png" alt="Create Payment" width="24" length="24"></a></td>
 <td><a href="/payment/manage/{{ payment.id }}/"><img src="/members/static/icons/edit.png" alt="Edit Payment" width="24" length="24"></a></td>
 <td><a href="/payment/delete/{{ payment.id }}/"><img src="/members/static/icons/delete.png" alt="Delete" width="24" length="24"></a></td>
-<td>{{ payment.payment_note }}</td>
 </tr>
 {% endfor %}
 </tbody>

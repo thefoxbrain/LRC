@@ -119,7 +119,7 @@ class Member(models.Model):
         super(Member, self).save(*args, **kwargs)    
     
 class MemberFilter(django_filters.FilterSet):
-    full_name = django_filters.AllValuesFilter()
+    full_name = django_filters.ModelChoiceFilter(queryset=Member.objects.order_by('full_name'))
     payment_method = django_filters.ChoiceFilter(choices=FILTER_PAYMENTMETHOD_CHOICES, label='Payment Method')
     member_status = django_filters.ChoiceFilter(choices=FILTER_STATUS_CHOICES, label='Member Status')
         
