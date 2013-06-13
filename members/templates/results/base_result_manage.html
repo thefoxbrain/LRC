@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+
+{% block active_addpayment %}active{% endblock %}
+
+{% block title %}List of Payments{% endblock %}
+
+{% block content %}
+
+<h3>Add \ Edit Payment</h3>
+
+
+
+<form action="" method="POST">{% csrf_token %}
+
+{{ form.non_field_errors }}
+<table>
+	<tbody>
+		<tr>
+			<td>    
+				<div class="fieldWrapper">
+			        {{ form.event.errors }}
+			        <label for="id_event">Event&nbsp;Name:</label>
+			        {{ form.event }}
+    			</div>
+    		</td>
+    		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+			<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+		</tr>
+
+		<tr>
+			<td>
+			    <div class="fieldWrapper">
+			        {{ form.boat_class.errors }}
+			        <label for="id_boat_class">Class:</label>
+			        {{ form.boat_class }}
+    			</div>
+			</td>
+			<td>
+			    <div class="fieldWrapper">
+			        {{ form.boat_status.errors }}
+			        <label for="id_boat_status">Status:</label>
+			        {{ form.boat_status }}
+			    </div>
+			</td>
+			<td>
+			    <div class="fieldWrapper">
+			        {{ form.boat_category.errors }}
+			        <label for="id_boat_category">Category:</label>
+			        {{ form.boat_category }}
+			    </div>
+			</td>
+		</tr>
+		
+		</tr>
+			<td>    
+				<div class="fieldWrapper">
+			        {{ form.crew_members.errors }}
+			        <label for="id_crew_members">Crew:</label>
+			        {{ form.crew_members }}
+    			</div>
+    		</td>
+    		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+			<td>
+			    <div class="fieldWrapper">
+			        {{ form.cox.errors }}
+			        <label for="id_cox">Cox:</label>
+			        {{ form.cox }}
+			    </div>
+			</td>    		
+						
+		<tr>
+
+	</tbody>
+</table>
+
+    <p><input type="submit" value="Save" /></p>
+</form>
+
+ 
+{% endblock %}

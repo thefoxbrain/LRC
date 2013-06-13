@@ -1,4 +1,6 @@
 from django.db import models
+from django import forms
+from django.forms import ModelForm
 import django_filters
 
 from members.models import Member
@@ -20,6 +22,13 @@ class Event(models.Model):
     
     def __unicode__(self):
         return self.event_name    
+    
+class EventForm(ModelForm):
+        
+    class Meta:
+        model = Event
+        fields = ['event_name', 'event_type','event_date']
+
     
 class EventFilter(django_filters.FilterSet):
     event_name = django_filters.ModelChoiceFilter(queryset=Event.objects.order_by('-event_date'))
@@ -77,17 +86,15 @@ class Result(models.Model):
         ('L', 'MasG')
         )
     boat_status = models.CharField(max_length=1, choices=BOATSTATUS_CHOICES)
-
-    crew_1 = models.ForeignKey(Member, related_name="crew_1")
-    crew_2 = models.ForeignKey(Member, related_name="crew_2",null=True,  blank=True)
-    crew_3 = models.ForeignKey(Member, related_name="crew_3",null=True,  blank=True)
-    crew_4 = models.ForeignKey(Member, related_name="crew_4",null=True,  blank=True)
-    crew_5 = models.ForeignKey(Member, related_name="crew_5", null=True, blank=True)
-    crew_6 = models.ForeignKey(Member, related_name="crew_6",null=True,  blank=True)
-    crew_7 = models.ForeignKey(Member, related_name="crew_7", null=True, blank=True)
-    crew_8 = models.ForeignKey(Member, related_name="crew_8", null=True, blank=True)
     cox = models.ForeignKey(Member, related_name="cox",null=True,  blank=True)
-    crew_members = models.ManyToManyField(Member) 
+    crew_members = models.ManyToManyField(Member)
+    
+class ResultForm(ModelForm):
+    
+    class Meta:
+        model = Result
+        fields = ['event', 'boat_class','boat_category','boat_status','cox','crew_members']
+      
 
 class ResultFilter(django_filters.FilterSet):
     event = django_filters.ModelChoiceFilter(queryset=Event.objects.order_by('-event_date'))

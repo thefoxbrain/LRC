@@ -27,19 +27,11 @@
 			<td>{{ result.get_boat_class_display }}</a></td>
 			<td>{{ result.get_boat_status_display }}</a></td>
 			<td>{{ result.get_boat_category_display }}</a></td>
-			<td width="150"><a href="/results/{{ result.id }}"><img src="{{ STATIC_URL }}icons/people.png" width="24" length="24"></a></td>
-		</tr>
-		<tr>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
 			<td>
 			    {% for crew_member in result.crew_members.all %}
-				    <a href="/member/{{ crew_member.id }}/">{{ crew_member.full_name }}</a><a href="/results/?crew_members={{ crew_member.id }}"><img src="{{ STATIC_URL }}icons/wins.png" alt="Wins History" width="24" length="24"></a></br>
+				    <a href="/member/{{ crew_member.id }}/">{{ crew_member.full_name }}</a>&nbsp;<a href="/results/?crew_members={{ crew_member.id }}"><img src="{{ STATIC_URL }}icons/wins.png" alt="Wins History" width="24" length="24"></a></br>
 				{% endfor %}
-				<a href="/member/{{ result.cox.id }}/">{{ result.cox|default_if_none:"" }}</a> (cox)
+				<a href="/member/{{ result.cox.id }}/">{{ result.cox|default_if_none:"" }}</a> {% if result.cox %}&nbsp;(cox)&nbsp;<a href="/results/?crew_members={{ result.cox.id }}"><img src="{{ STATIC_URL }}icons/wins.png" alt="Wins History" width="24" length="24"></a>{% else %}{% endif %} 
 			</td>
 		</tr>
 	{% endfor %}

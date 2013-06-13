@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block active_addpayment %}active{% endblock %}
+
+{% block title %}List of Payments{% endblock %}
+
+{% block content %}
+
+<h3>Add \ Edit Payment</h3>
+
+
+
+<form action="" method="POST">{% csrf_token %}
+
+{{ form.non_field_errors }}
+<table>
+	<tbody>
+		<tr>
+			<td>    
+				<div class="fieldWrapper">
+			        {{ form.event_name.errors }}
+			        <label for="id_event_name">Event Name:</label>
+			        {{ form.event_name }}
+    			</div>
+    		</td>
+    		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+			<td>
+			</td>
+		</tr>
+
+		<tr>
+			<td>
+			    <div class="fieldWrapper">
+			        {{ form.event_type.errors }}
+			        <label for="id_event_type">Type:</label>
+			        {{ form.event_type }}
+    			</div>
+			</td>
+			<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+			<td>
+			    <div class="fieldWrapper">
+			        {{ form.event_date.errors }}
+			        <label for="id_event_date">Date:</label>
+			        {{ form.event_date }}
+			    </div>
+			</td>
+		</tr>
+
+	</tbody>
+</table>
+
+    <p><input type="submit" value="Save" /></p>
+</form>
+
+ 
+{% endblock %}
