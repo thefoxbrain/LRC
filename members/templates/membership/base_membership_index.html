@@ -28,7 +28,7 @@ $(function(){
 		<tr>
 			<td>{{ membership.name }}</td>
 			<td>&pound;{{ membership.cost }}</td>
-				<td><a href="/member/?membership_type={{ membership.id }}"><img src="{{ STATIC_URL }}icons/people.png" alt="Payment History" width="24" length="24"> ( {{ membership.types.count }} )</a></td>
+				<td><a href="/member/?membership_type={{ membership.id }}" title="List of {{ membership.name }} members"><img src="{{ STATIC_URL }}icons/people.png" alt="Payment History" width="24" length="24"> ( {{ membership.types.count }} )</a></td>
 		</tr>
 		{% endfor %}
 	</tbody>

@@ -22,14 +22,14 @@
 	<tbody>
 		<tr>
 			{% for result in result_list %}
-			<td><a href="/results/event/?event_name={{ result.event.id }}">{{ result.event }}</a></td>
+			<td><a href="/results/event/?event_name={{ result.event.id }}">{{ result.event }}</a><a href="/results/?event={{ result.event.id }}" title="All wins for {{ result.event.event_name }}"><img src="{{ STATIC_URL }}icons/wins.png" alt="Wins List" width="24" length="24"> ( {{ result.event.event.count }} )</a></td>
 			<td>{{ result.event.event_date }}</a></td>
 			<td>{{ result.get_boat_class_display }}</a></td>
 			<td>{{ result.get_boat_status_display }}</a></td>
 			<td>{{ result.get_boat_category_display }}</a></td>
 			<td>
 			    {% for crew_member in result.crew_members.all %}
-				    <a href="/member/{{ crew_member.id }}/">{{ crew_member.full_name }}</a>&nbsp;<a href="/results/?crew_members={{ crew_member.id }}"><img src="{{ STATIC_URL }}icons/wins.png" alt="Wins History" width="24" length="24"></a></br>
+				    <a href="/member/{{ crew_member.id }}/">{{ crew_member.full_name }}</a>&nbsp;<a href="/results/?crew_members={{ crew_member.id }}" title="All wins for {{ crew_member.full_name }}"><img src="{{ STATIC_URL }}icons/wins.png" alt="Wins History" width="24" length="24"></a></br>
 				{% endfor %}
 				<a href="/member/{{ result.cox.id }}/">{{ result.cox|default_if_none:"" }}</a> {% if result.cox %}&nbsp;(cox)&nbsp;<a href="/results/?crew_members={{ result.cox.id }}"><img src="{{ STATIC_URL }}icons/wins.png" alt="Wins History" width="24" length="24"></a>{% else %}{% endif %} 
 			</td>

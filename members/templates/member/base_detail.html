@@ -5,7 +5,7 @@
 {% block title %}Member Detail{% endblock %}
 
 {% block content %}
-<h3>{{ member.first_name }} {{ member.last_name }}</h3>
+<h3>{{ member.first_name }} {{ member.last_name }}  {% if perms.members.change_member %} <a href="/member/manage/{{ member.id }}/"><img src="/members/static/icons/edit.png" title="Edit {{ member.first_name }}'s details" alt="Edit Member" width="24" length="24"></a>{% endif %}</h3>
 
 <table class="table ">
   <tbody>
@@ -27,8 +27,11 @@
       <td>Last Name : </td>
       <td>{{ member.last_name }}</td>
       <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-      <td>Payment History :</td>
-      <td><a href="/payment/?member={{ member.id }}"><img src="{{ STATIC_URL }}icons/history.png" alt="Wins History" width="24" length="24"></a></td></td><td>
+      <td>Payments :</td>
+      <td><a href="/payment/?member={{ member.id }}"><img src="/members/static/icons/history.png" title="{{ member.first_name }}'s payment history" alt="Payment History" width="24" length="24"></a>
+      {% if perms.payment.change_payment %}
+      	&nbsp;<a href="/payment/create/{{ member.id }}/"><img src="/members/static/icons/create.png" title="Add a payment for {{ member.first_name }}"alt="Create Payment" width="24" length="24"></a></td>
+      {% endif %}
     </tr>
 	<tr>
 		<td>Membership : </td>
@@ -48,8 +51,8 @@
 	      <td>Parent/Guardian : </td>
 	      <td>{{ member.pg_name }}</td>
 	      <td></td>
-	      <td>Wins Record</td>
-	      <td></a><a href="/results/?crew_members={{ member.id }}"><img src="{{ STATIC_URL }}icons/wins.png" alt="Wins History" width="24" length="24"></a></td>
+	      <td>Wins Record</td> 
+	      <td></a><a href="/results/?crew_members={{ member.id }}" title="All wins for {{ member.full_name }}"><img src="{{ STATIC_URL }}icons/wins.png" alt="Wins History" width="24" length="24"></a></td>
 	    </tr>
 	  </tbody>
 	</table>  	  

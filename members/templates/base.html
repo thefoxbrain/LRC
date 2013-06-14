@@ -66,13 +66,18 @@ width: 5em;
 }
 </style>
  
-{% include_nvd3jscss %}
-{% load_chart charttype chartdata "piechart_container" %}
+<!-- {% include_nvd3jscss %} -->
+<!-- {% load_chart charttype chartdata "piechart_container" %} -->
 
 
 </head>
 
 <body>
+{% if user.is_authenticated %}
+    <p>User :{{ user.username }}. Thanks for logging in.</p>
+{% else %}
+    <p>Welcome, new user. Please <a href="/login/">Login</a></p>
+{% endif %}
 
 	<div class="row">
     	<div class="span12 offset1">
@@ -87,6 +92,7 @@ width: 5em;
 		<li><a href="">Maintenance</a></li>
 		<li><a href="">Equipment</a></li>
 		<li><a href="/admin/">Admin</a></li>
+		<li><a href="/login/">Login</a></li>
     </ul>
 
 				<div class="row">
@@ -94,8 +100,14 @@ width: 5em;
 						{% block sidebar %}
 							<h4>Add New</h4>
 							<ul class="nav nav-pills nav-stacked">	
-								<li class="{% block active_addpayment %}{% endblock %}"><a href="/payment/create/0/">Payment</a></li>
-								<li class="{% block active_addmember %}{% endblock %}"><a href="/member/manage/">Member</a></li>
+								{% if perms.payment.add_payment %}
+									<li class="{% block active_addpayment %}{% endblock %}"><a href="/payment/create/0/">Payment</a></li>
+								{% endif %}									
+								
+								{% if perms.members.add_member %}
+									<li class="{% block active_addmember %}{% endblock %}"><a href="/member/manage/">Member</a></li>
+								{% endif %}						
+								
 								<li class="{% block active_addevent %}{% endblock %}"><a href="/results/event/manage/">Event</a></li>
 								<li class="{% block active_addresult %}{% endblock %}"><a href="/results/create/0/">Result</a></li>
 							</ul>

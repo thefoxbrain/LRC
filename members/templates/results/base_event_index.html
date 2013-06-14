@@ -24,8 +24,8 @@
 <td><a href="/results/event/?event_name={{ event.id }}">{{ event.event_name }}</a></td>
 <td>{{ event.event_date }}</a></td>
 <td>{{ event.get_event_type_display }}</a></td>
-<td><a href="/results/event/manage/{{ event.id }}/" title="Edit {{ event.event_name }}"><img src="/members/static/icons/edit.png" alt="Edit Payment" width="24" length="24"></a></td>
-<td><a href="/results/?event={{ event.id }}" title="Wins for {{ event.event_name }}"><img src="{{ STATIC_URL }}icons/wins.png" alt="Payment History" width="24" length="24"> ( {{ event.event.count }} )</a>&nbsp;&nbsp;<a href="/results/create/{{ event.id }}/" title="Add win for {{ event.event_name }}"><img src="/members/static/icons/create.png" alt="Create Payment" width="24" length="24"></a></td>
+<td><a href="/results/event/manage/{{ event.id }}/" title="Edit {{ event.event_name }}"><img src="/members/static/icons/edit.png" alt="Edit Event" width="24" length="24"></a></td>
+<td><a href="/results/?event={{ event.id }}" title="Wins for {{ event.event_name }}"><img src="{{ STATIC_URL }}icons/wins.png" alt="Wins List" width="24" length="24"> ( {{ event.event.count }} )</a>&nbsp;&nbsp;<a href="/results/create/{{ event.id }}/" title="Add win for {{ event.event_name }}"><img src="/members/static/icons/create.png" alt="Create Payment" width="24" length="24"></a></td>
 </tr>
 {% endfor %}
 </tbody>
