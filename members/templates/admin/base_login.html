@@ -1,6 +1,21 @@
-{% extends "base.html" %}
+<style type="text/css">
+        .myTableStyle
+        {
+           position:absolute;
+           top:50%;
+           left:50%; 
 
-{% block content %}
+            /*Alternatively you could use: */
+           /*
+              position: fixed;
+               bottom: 50%;
+               right: 50%;
+           */
+
+
+        }
+    </style>
+
 
 {% if form.errors %}
 <p>Your username and password didn't match. Please try again.</p>
@@ -23,4 +38,3 @@
 <input type="hidden" name="next" value="{{ next }}" />
 </form>
 
-{% endblock %}
