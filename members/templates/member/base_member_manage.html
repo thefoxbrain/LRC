@@ -6,7 +6,12 @@
 
 {% block content %}
 
-<h3>Add \ Edit Member</h3>
+{% if  request.get_full_path == '/member/manage/' %}
+	<h3>Add New Member</h3>
+{% else %}
+	<h3>Edit Member</h3>
+{% endif %}
+	
 
 <form action="" method="POST">{% csrf_token %}
 	<fieldset>

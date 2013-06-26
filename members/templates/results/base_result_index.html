@@ -8,7 +8,7 @@
 <h3>Results</h3>
 {% if result_list %}
 
-<table id="myTable" class="table tablesorter">
+<table id="myTable" class="table table-hover tablesorter">
 	<thead>
 		<tr>
 			<th>Event</th>
@@ -17,12 +17,13 @@
 			<th>Status</th>
 			<th>Boat</th>
 			<th>Crew</th>
+			<th></th>
 		</tr>
 	</thead>
 	<tbody>
 		<tr>
 			{% for result in result_list %}
-			<td><a href="/results/event/?event_name={{ result.event.id }}">{{ result.event }}</a><a href="/results/?event={{ result.event.id }}" title="All wins for {{ result.event.event_name }}"><img src="{{ STATIC_URL }}icons/wins.png" alt="Wins List" width="24" length="24"> ( {{ result.event.event.count }} )</a></td>
+			<td><a href="/results/event/?event_name={{ result.event.id }}">{{ result.event }}</a>
 			<td>{{ result.event.event_date }}</a></td>
 			<td>{{ result.get_boat_class_display }}</a></td>
 			<td>{{ result.get_boat_status_display }}</a></td>
@@ -33,6 +34,7 @@
 				{% endfor %}
 				<a href="/member/{{ result.cox.id }}/">{{ result.cox|default_if_none:"" }}</a> {% if result.cox %}&nbsp;(cox)&nbsp;<a href="/results/?crew_members={{ result.cox.id }}"><img src="{{ STATIC_URL }}icons/wins.png" alt="Wins History" width="24" length="24"></a>{% else %}{% endif %} 
 			</td>
+			<td><a href="/results/manage/{{ result.id }}/" title="Edit"><img src="/members/static/icons/edit.png" alt="Edit Event" width="24" length="24"></a>&nbsp;<a href="/results/create/{{ result.event.id }}/" title="Add another win for {{ result.event.event_name }}"><img src="/members/static/icons/create.png" alt="Create Payment" width="24" length="24"></a>&nbsp;<a href="/results/delete/{{ result.id }}/" title="Delete"><img src="/members/static/icons/delete.png" alt="Delete" width="24" length="24"></a></td>
 		</tr>
 	{% endfor %}
 	</tbody>
@@ -64,10 +66,10 @@
 {% block sidebar2 %}
     <form action="" method="get" class="input-medium">
 <h4 class="text-left">Member</h4>
-<select class="input-medium" {{ result_list.form.crew_members }}
+<select class="input-large" {{ result_list.form.crew_members }}
 	<h4 class="text-left">Filter</h4>
 	Event<br>
-	<select class="input-medium" {{ result_list.form.event }}
+	<select class="input-large" {{ result_list.form.event }}
 	<input class="btn btn-success" type="submit" value="Apply" />
 	
 </form>    

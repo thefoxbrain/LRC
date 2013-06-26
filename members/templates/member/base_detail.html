@@ -24,34 +24,34 @@
       <td>{{ member.get_gender_display }}</td>      
     </tr>
     <tr>
-      <td>Last Name : </td>
+      <td><strong>Last Name : </strong></td>
       <td>{{ member.last_name }}</td>
       <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-      <td>Payments :</td>
+      <td><strong>Payments :</strong></td>
       <td><a href="/payment/?member={{ member.id }}"><img src="/members/static/icons/history.png" title="{{ member.first_name }}'s payment history" alt="Payment History" width="24" length="24"></a>
       {% if perms.payment.change_payment %}
       	&nbsp;<a href="/payment/create/{{ member.id }}/"><img src="/members/static/icons/create.png" title="Add a payment for {{ member.first_name }}"alt="Create Payment" width="24" length="24"></a></td>
       {% endif %}
     </tr>
 	<tr>
-		<td>Membership : </td>
+		<td><strong>Membership : </strong></td>
 		<td><a href="/member/?membership_type={{ member.membership_type.id }}">{{ member.membership_type.name }}</a></td>
 		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-		<td>Payment Method:</td>
+		<td><strong>Payment Method:</strong></td>
 		<td>{{ member.get_payment_method_display }}</td>
 	</tr>
 	<tr>
-		<td> Created By : </td>
+		<td><strong>Created By : </strong></td>
 		<td></td>
 		<td></td>
-		<td>Start Date :</td>
+		<td><strong>Start Date :</strong></td>
 		<td>{{ member.start_date }}</td>
 	</tr>
 	<tr>
-	      <td>Parent/Guardian : </td>
+	      <td><strong>Parent/Guardian : </strong></td>
 	      <td>{{ member.pg_name }}</td>
 	      <td></td>
-	      <td>Wins Record</td> 
+	      <td><strong>Wins Record</strong></td> 
 	      <td></a><a href="/results/?crew_members={{ member.id }}" title="All wins for {{ member.full_name }}"><img src="{{ STATIC_URL }}icons/wins.png" alt="Wins History" width="24" length="24"></a></td>
 	    </tr>
 	  </tbody>
@@ -74,35 +74,35 @@
 <table class="table">
   <tbody>
     <tr>
-      <td>Address 1 : </td>
+      <td><strong>Address 1 : </strong></td>
       <td>{{ member.address_1 }}</td>
       <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-      <td>Home Phone :</td>
+      <td><strong>Home Phone :</strong></td>
       <td>{{ member.home_phone }}</td>
     </tr>
     <tr>
-      <td>Address 2 : </td>
+      <td><strong>Address 2 : </strong></td>
       <td>{{ member.address_2 }}</td>
       <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-      <td>Mobile Phone :</td>
+      <td><strong>Mobile Phone :</strong></td>
       <td>{{ member.mobile_phone }}</td>      
     </tr>
     <tr>
-      <td>Town/City : </td>
+      <td><strong>Town/City : </strong></td>
       <td>{{ member.address_3 }}</td>
       <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-      <td>Email :</td>
+      <td><strong>Email :</strong></td>
       <td><a href="mailto:{{ member.email }}">{{ member.email }}</a></td>
     </tr>
     <tr>
-      <td>County : </td>
+      <td><strong>County : </strong></td>
       <td>{{ member.address_4 }}</td>
       <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
       <td></td>
       <td></td>      
     </tr>            
     <tr>
-      <td>Post Code : </td>
+      <td><strong>Post Code : </strong></td>
       <td>{{ member.post_code }}</td>
       <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
       <td></td>
@@ -116,18 +116,18 @@
 <!-- Emergency Contact Details -->
 <div class="tab-pane" id="tab2">
 
-<table>
+<table class="table">
   <tbody>
     <tr>
-      <td>Name of Contact : </td>
+      <td><strong>Name of Contact : </strong></td>
       <td>{{ member.em_contact_name }}</td>
-      <td>Relationship :</td>
+      <td><strong>Relationship :</strong></td>
       <td>{{ member.em_relationship }}</td>
     </tr>
     <tr>
-      <td>Contact No. : </td>
+      <td><strong>Contact No. : </strong></td>
       <td>{{ member.em_contact_no }}</td>
-      <td>Mobile Phone :</td>
+      <td><strong>Mobile Phone :</strong></td>
       <td>{{ member.mobile_phone }}</td>      
     </tr>
   </tbody>
@@ -138,18 +138,18 @@
 <!--Rowing Membership -->
 <div class="tab-pane" id="tab3">
 
-<table>
+<table class="table">
   <tbody>
     <tr>
-      <td>Membership : </td>
+      <td><strong>Membership : </strong></td>
       <td>{{ member.membership_type }}</td>
-      <td>Rowing Points :</td>
+      <td><strong>Rowing Points :</strong></td>
       <td>{{ member.rowing_points }}</td>  
     </tr>
     <tr>
-      <td>British Rowing No. :</td>
+      <td><strong>British Rowing No. :</strong></td>
       <td>{{ member.br_membership_no }}</td>
-      <td>Sculling Points :</td>
+      <td><strong>Sculling Points :</strong></td>
       <td>{{ member.sculling_points }}</td>      
     </tr>
   </tbody>
@@ -159,18 +159,18 @@
 
 <!-- Swimming Ability -->
 <div class="tab-pane" id="tab4">
-<table>
+<table class="table">
   <tbody>
     <tr>
-      <td>Swim 50 metres : </td>
+      <td><strong>Swim 50 metres : </strong></td>
       <td>{{ member.get_swim_50_display }}</td>
     </tr>
     <tr>
-      <td>Swim 5 underwater : </td>
+      <td><strong>Swim 5 underwater : </strong></td>
       <td>{{ member.get_swim_5_underwater_display }}</td>
     </tr>
     <tr>
-      <td>Tread water 2 mins : </td>
+      <td><strong>Tread water 2 mins : </strong></td>
       <td>{{ member.get_swim_tread_display  }}</td>
     </tr>
   </tbody>
@@ -181,12 +181,12 @@
 <div class="tab-pane" id="tab5">
   
 <!-- Health Questionnaire-->
-	<table>
+	<table class="table">
 	  <tbody>
 	    <tr>
-	      <td>Good general health? :</td>
+	      <td><strong>Good general health? :</strong></td>
 	      <td>{{ member.get_health_1_good_health_display }}</td>
-	      <td>if No - details :</td>
+	      <td><strong>if No - details :</strong></td>
 	      <td>{{ member.health_1_details }}</td>
 	    </tr>
 	  </tbody>
@@ -194,30 +194,30 @@
 	
 	<br>
 	
-	<table>
+	<table class="table">
 	  <tbody>
 	    <tr>
-	      <td>Diabetes : </td>
+	      <td><strong>Diabetes : </strong></td>
 	      <td>{{ member.get_health_2_diabetes_display }}</td>
-	      <td>Epilepsy : </td>
+	      <td><strong>Epilepsy : </strong></td>
 	      <td>{{ member.get_health_2_epilepsy_display }}</td>
 	    </tr>
 	    <tr>
-	      <td>Asthma : </td>
+	      <td><strong>Asthma : </strong></td>
 	      <td>{{ member.get_health_2_asthma_display }}</td>
-	      <td>Dyspraxia : </td>
+	      <td><strong>Dyspraxia : </strong></td>
 	      <td>{{ member.get_health_2_dyspraxia_display }}</td>      
 	    </tr>
 	    <tr>
-	      <td>Heart Disease : </td>
+	      <td><strong>Heart Disease :</strong> </td>
 	      <td>{{ member.get_health_2_heart_disease_display }}</td>
-	      <td>Other :</td>
+	      <td><strong>Other :</strong></td>
 	      <td>{{ member.get_health_2_other_display }}</td>
 	    </tr>
 	   	 <tr>
 	      <td></td>
 	      <td></td>
-	      <td>Details :</td>
+	      <td><strong>Details :</strong></td>
 	      <td>{{ member.health_2_details }}</td>
 	    </tr>
 	  </tbody>
@@ -225,12 +225,12 @@
 	  
 	<br>
 	  
-	<table>
+	<table class="table">
 	  <tbody>
 	    <tr>
-	      <td>Other conditions affecting Rowing</td>
+	      <td><strong>Other conditions affecting Rowing</strong>/td>
 	      <td>{{ member.health_3_details }}</td>
-	      <td>Other health conditions</td>
+	      <td><strong>Other health conditions</strong></td>
 	      <td>{{ member.health_4_details }}</td>  
 	    </tr>
 	  </tbody>

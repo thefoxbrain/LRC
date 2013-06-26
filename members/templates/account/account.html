@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block active_account %}active{% endblock %}
+
+{% block title %}Payment Detail{% endblock %}
+
+{% block content %}
+<h1>{{ member.first_name }} {{ member.last_name }}</h1>
+
+<h3>User Details</h3>
+<table class="table">
+  <tbody>
+    <tr>
+		<td>User</td>
+		<td>Members</td>
+		<td>Payments</td>
+		<td>Events</td>
+		<td>Results</td>
+	</tr>
+	<tr>
+		<td>{{ user.username }}</td>
+		<td>{% if perms.members.add_member %}Add&nbsp;{% endif %}{% if perms.members.change_member %}Edit&nbsp;{% endif %}{% if perms.members.delete_member %}Delete&nbsp;{% endif %}</td>
+		<td>{% if perms.payment.add_payment %}Add&nbsp;{% endif %}{% if perms.payment.change_payment %}Edit&nbsp;{% endif %}{% if perms.payment.delete_payment %}Delete&nbsp;{% endif %}</td>
+		<td>{% if perms.results.add_event %}Add&nbsp;{% endif %}{% if perms.results.change_event %}Edit&nbsp;{% endif %}{% if perms.results.delete_event %}Delete&nbsp;{% endif %}</td>
+		<td>{% if perms.results.add_result %}Add&nbsp;{% endif %}{% if perms.results.change_result %}Edit&nbsp;{% endif %}{% if perms.results.delete_result %}Delete&nbsp;{% endif %}</td>
+    </tr>
+  </tbody>
+  </table>
+  
+<br>  
+
+<br>
+<br>
+<br>
+{% endblock %}

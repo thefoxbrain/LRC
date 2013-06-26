@@ -8,7 +8,7 @@
 <h3>Payments</h3>
 {% if payment_list %}
 
-<table id="myTable" class="table tablesorter">
+<table id="myTable" class="table table-hover tablesorter">
 	<thead>
 		<tr>
 			<th>Payment Date</th>
@@ -16,9 +16,7 @@
 			<th>Type</th>
 			<th>Amount</th>
 			<th>History</th>
-			<th>Create</th>
-			<th>Edit</th>
-			<th>Delete</th>
+			<th></th>
 		</tr>
 	</thead>
 	<tbody>
@@ -29,18 +27,19 @@
 			<td>{{ payment.get_payment_type_display }}</td>
 			<td>{{ payment.amount }}</td>
 			<td><a href="/payment/?member={{ payment.member.id }}" title="{{ payment.member.first_name }}'s payment history"><img src="/members/static/icons/history.png" alt="Payment History" width="24" length="24"></a></td>
-
+			<td>
 			{% if perms.payment.add_payment %}
-				<td><a href="/payment/create/{{ payment.member.id }}/" title="Add a payment for {{ payment.member.first_name }}"><img src="/members/static/icons/create.png" alt="Create Payment" width="24" length="24"></a></td>
+				<a href="/payment/create/{{ payment.member.id }}/" title="Add a payment for {{ payment.member.first_name }}"><img src="/members/static/icons/create.png" alt="Create Payment" width="24" length="24"></a>
 			{% endif %}
 			
 			{% if perms.payment.change_payment %}			
-				<td><a href="/member/manage/{{ member.id }}/"><img src="/members/static/icons/edit.png" title="Edit {{ member.first_name }}'s details" alt="Edit Member" width="24" length="24"></a></td>
+				<a href="/payment/manage/{{ payment.id }}/"><img src="/members/static/icons/edit.png" title="Edit Payment" alt="Edit Member" width="24" length="24"></a>
 			{% endif %}
 
 			{% if perms.payment.delete_payment %}
-				<td><a href="/payment/delete/{{ payment.id }}/" title="Delete this payment"><img src="/members/static/icons/delete.png" alt="Delete" width="24" length="24"></a></td>
+				<a href="/payment/delete/{{ payment.id }}/" title="Delete this payment"><img src="/members/static/icons/delete.png" alt="Delete" width="24" length="24"></a>
 			{% endif %}				
+			</td>
 		</tr>
 	{% endfor %}
 	</tbody>
@@ -72,14 +71,14 @@
 {% block sidebar2 %}
     <form action="" method="get" class="input-medium">
 <h4 class="text-left">Member</h4>
-<select class="input-medium" {{ payment_list.form.member }}
+<select class="input-large" {{ payment_list.form.member }}
 <input class="btn btn-success" type="submit" value="Apply" />
     </form>
     
     <form action="" method="get" class="input-medium">
 <h4 class="text-left">Filter</h4>
 Payment Type<br>
-<select class="input-medium" {{ payment_list.form.payment_type }}
+<select class="input-large" {{ payment_list.form.payment_type }}
 From Date<br>
 <div class="input-append">
 	<span class="add-on"><i class="icon-calendar"></i></span>

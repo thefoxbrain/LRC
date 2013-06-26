@@ -73,45 +73,52 @@ width: 5em;
 </head>
 
 <body>
-{% if user.is_authenticated %}
-    <p>User :{{ user.username }}. Thanks for logging in.</p>
-{% else %}
-    <p>Welcome, new user. Please <a href="/login/">Login</a></p>
-{% endif %}
-
+	
 	<div class="row">
     	<div class="span12 offset1">
 
-    <ul class="nav nav-pills">
-		<li class="{% block active_membership %}{% endblock %}"><a href="/membership/">Membership</a></li>
-		<li class="{% block active_members %}{% endblock %}"><a href="/member/">Members</a></li>
-		<li class="{% block active_payments %}{% endblock %}"><a href="/payment/">Payments</a></li>
-		<li class="{% block active_events %}{% endblock %}"><a href="/results/event/">Events</a></li>
-		<li class="{% block active_results %}{% endblock %}"><a href="/results/">Results</a></li>
-		<li><a href="">Bank Details</a></li>
-		<li><a href="">Maintenance</a></li>
-		<li><a href="">Equipment</a></li>
-		<li><a href="/admin/">Admin</a></li>
-		<li><a href="/login/">Login</a></li>
-    </ul>
+<div class="navbar">
+	<div class="navbar-inner">
+		<ul class="nav">
+			<li class="{% block active_membership %}{% endblock %}"><a href="/membership/">Membership</a></li>
+			<li class="{% block active_members %}{% endblock %}"><a href="/member/">Members</a></li>
+			<li class="{% block active_payments %}{% endblock %}"><a href="/payment/">Payments</a></li>
+			<li class="{% block active_events %}{% endblock %}"><a href="/results/event/">Events</a></li>
+			<li class="{% block active_results %}{% endblock %}"><a href="/results/">Results</a></li>
+	 		<li class="dropdown">
+				<a class="dropdown-toggle" data-toggle="dropdown" href="#">Add New<b class="caret"></b></a>
+				<ul class="dropdown-menu">
+					
+					{% if perms.payment.add_payment %}
+						<li class="{% block active_addpayment %}{% endblock %}"><a href="/payment/create/0/">Payment</a></li>
+					{% endif %}		
+					
+					{% if perms.members.add_member %}
+						<li class="{% block active_addmember %}{% endblock %}"><a href="/member/manage/">Member</a></li>
+					{% endif %}	
+	
+					{% if perms.results.add_event %}
+						<li class="{% block active_addevent %}{% endblock %}"><a href="/results/event/manage/">Event</a></li>
+					{% endif %}	
+					
+					{% if perms.results.add_result %}
+						<li class="{% block active_addresult %}{% endblock %}"><a href="/results/create/0/">Result</a></li>
+					{% endif %}	
+				</ul>
+			</ul>			
+		</ul>
+		<ul class="nav pull-right">
+
+			{% if user.is_staff %}<li><a href="/admin/">Admin</a></li>{% endif %}
+	   		<li class="{% block active_account %}{% endblock %}"><a href="/account/">User :{{ user.username }}</a></li>
+			<li><a href="/logout/">Logout</a></li>	
+
+	</div>
+</div>	
 
 				<div class="row">
-					<div class="span2.5">
-						{% block sidebar %}
-							<h4>Add New</h4>
-							<ul class="nav nav-pills nav-stacked">	
-								{% if perms.payment.add_payment %}
-									<li class="{% block active_addpayment %}{% endblock %}"><a href="/payment/create/0/">Payment</a></li>
-								{% endif %}									
-								
-								{% if perms.members.add_member %}
-									<li class="{% block active_addmember %}{% endblock %}"><a href="/member/manage/">Member</a></li>
-								{% endif %}						
-								
-								<li class="{% block active_addevent %}{% endblock %}"><a href="/results/event/manage/">Event</a></li>
-								<li class="{% block active_addresult %}{% endblock %}"><a href="/results/create/0/">Result</a></li>
-							</ul>
-						{% endblock sidebar %}
+					<div class="span3">
+
 
 						{% block sidebar2 %}{% endblock sidebar2 %}
 
@@ -125,7 +132,7 @@ width: 5em;
 					</div>
 				</div>
 
-		</div>
+		
 </div>
 
 

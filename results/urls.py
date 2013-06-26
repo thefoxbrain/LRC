@@ -9,12 +9,15 @@ urlpatterns = patterns('results.views',
     (r'^create/(?P<event_id>\d+)/$', 'create_result'),
     # ex: /payment/manage/1/
     (r'^manage/(?P<result_id>\d+)/$', 'result_edit'),
+    # ex: /payment/manage/1/
+    (r'^delete/(?P<result_id>\d+)/$', 'result_delete'),        
     # Events    
     (r'^event/$', 'event_index'),    
     # manage
     (r'^event/manage/$', 'create_event'),
     # ex: /payment/manage/1/
     (r'^event/manage/(?P<event_id>\d+)/$', 'event_edit'),
-         
-    
+    # ex: /payment/manage/1/
+    (r'^event/delete/(?P<event_id>\d+)/$', 'event_delete'),    
+   
 )

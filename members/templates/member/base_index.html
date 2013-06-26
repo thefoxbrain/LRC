@@ -10,7 +10,7 @@
  
 {% if member_index %}
 
-<table id="myTable"  class="table tablesorter">
+<table id="myTable" class="table table-hover tablesorter">
 	<thead>
 	   <tr>
 			<th>Name</th>
@@ -24,7 +24,14 @@
 	<thead>
 	<tbody>
 {% for member in member_index %}
-		<tr>
+
+		{% if member.get_member_status_display == 'Ex-Member' %}
+			<tr class="error">
+		{% elif member.get_member_status_display == 'Inactive' %}
+			<tr class="warning">
+		{% else %}
+			<tr>
+		{% endif %}
 			<td><a href="/member/{{ member.id }}/">{{ member.full_name }}</a></td>
 			<td><a href="mailto:{{ member.email }}">{{ member.email }}</a></td>
 			<td><a href="/member/?membership_type={{ member.membership_type.id }}">{{ member.membership_type }}</a></td>
@@ -76,18 +83,18 @@
 {% block sidebar2 %}
     <form action="" method="get" class="input-medium">
 		<h4 class="text-left">Member</h4>
-			<select class="input-medium" {{ member_index.form.full_name }}
+			<select class="input-large" {{ member_index.form.full_name }}
 		<input class="btn btn-success" type="submit" value="Apply" />
 	</form>
 
     <form action="" method="get" class="input-medium">
 		<h4 class="text-left">Filter</h4>
 			Member Status<br>
-			<select class="input-medium" {{ member_index.form.member_status }}
+			<select class="input-large" {{ member_index.form.member_status }}
 			Member Type<br>
-			<select class="input-medium" {{ member_index.form.membership_type }}
+			<select class="input-large" {{ member_index.form.membership_type }}
 			Payment Method<br>
-			<select class="input-medium" {{ member_index.form.payment_method }}
+			<select class="input-large" {{ member_index.form.payment_method }}
 		<input class="btn btn-success" type="submit" value="Apply" />
 	</form>
 	<a class="btn btn-success" href="/member/">Show All</a>
