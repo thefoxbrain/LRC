@@ -148,6 +148,8 @@ INSTALLED_APPS = (
     # 'django_sorting',
     # 'sorter',
     'django_nvd3',
+    'account',
+    # 'south',
 )
 
 # A sample logging configuration. The only tangible logging

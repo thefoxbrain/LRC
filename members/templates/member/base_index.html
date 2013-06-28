@@ -6,7 +6,15 @@
 
 {% block content %}
 
-<h3>Members</h3>
+{% if 'member_status=A' in request.get_full_path  %}
+	<h3>Members (Active)</h3>
+{% elif 'member_status=I' in request.get_full_path  %}
+	<h3>Members (Inactive)</h3>
+{% elif 'member_status=X' in request.get_full_path  %}
+	<h3>Members (Ex-Members)</h3>
+{% else %}	
+	<h3>Members</h3>
+{% endif %}
  
 {% if member_index %}
 
@@ -14,12 +22,11 @@
 	<thead>
 	   <tr>
 			<th>Name</th>
-			<th>Email</th>
+			<th></th>
 			<th>Membership</th>
 			<th>Payments</th>
 			<th>Method</th>
-			<th>Wins</th>
-			<th>Edit</th>
+			<th></th>
 		</tr>
 	<thead>
 	<tbody>
@@ -33,22 +40,22 @@
 			<tr>
 		{% endif %}
 			<td><a href="/member/{{ member.id }}/">{{ member.full_name }}</a></td>
-			<td><a href="mailto:{{ member.email }}">{{ member.email }}</a></td>
+			<td><a href="mailto:{{ member.email }}"><img src="/members/static/icons/email.png" title="Email {{ member.first_name }}" width="24" length="24"></a></td>
 			<td><a href="/member/?membership_type={{ member.membership_type.id }}">{{ member.membership_type }}</a></td>
 			<td><a href="/payment/?member={{ member.id }}"><img src="/members/static/icons/history.png" title="{{ member.first_name }}'s payment history" alt="Payment History" width="24" length="24"></a>
 
 			{% if perms.payment.add_payment %}
-				&nbsp;<a href="/payment/create/{{ member.id }}/"><img src="/members/static/icons/create.png" title="Add a payment for {{ member.first_name }}"alt="Create Payment" width="24" length="24"></a></td>
+				<a href="/payment/create/{{ member.id }}/"><img src="/members/static/icons/create.png" title="Add a payment for {{ member.first_name }}"alt="Create Payment" width="24" length="24"></a></td>
 			{% endif %}
 
 			<td>{{ member.get_payment_method_display }}</td>
-			<td><a href="/results/?crew_members={{ member.id }}"><img src="/members/static/icons/wins.png" title="{{ member.first_name }}'s wins" alt="Wins List" width="24" length="24"></a></td>
-
+			<td>
+				<a href="/results/?crew_members={{ member.id }}"><img src="/members/static/icons/wins.png" title="{{ member.first_name }}'s wins" alt="Wins List" width="24" length="24"></a>
+				
 			{% if perms.members.change_member %}			
-				<td><a href="/member/manage/{{ member.id }}/"><img src="/members/static/icons/edit.png" title="Edit {{ member.first_name }}'s details" alt="Edit Member" width="24" length="24"></a></td>
-			{% else %}
-				<td>--</td>
+				<a href="/member/manage/{{ member.id }}/"><img src="/members/static/icons/edit.png" title="Edit {{ member.first_name }}'s details" alt="Edit Member" width="24" length="24"></a>
 			{% endif %}
+			</td>
 
 		</tr>
 	{% endfor %}

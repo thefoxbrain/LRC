@@ -1,12 +1,15 @@
 from django.forms import TextInput, Textarea
 from django.db import models
 from django.contrib import admin
+from django.contrib.auth.admin import UserAdmin
+from django.contrib.auth.models import User
 
 from members.models import Member
 from members.models import MembershipType
 from payment.models import Payment
 from results.models import Event
 from results.models import Result
+from account.models import LRC
 
 class PaymentInline(admin.TabularInline):
     model = Payment
@@ -132,3 +135,15 @@ class PaymentAdmin(admin.ModelAdmin):
     ordering = ['-payment_date']
 
 admin.site.register(Payment, PaymentAdmin)
+
+class LRCInline(admin.StackedInline):
+    model = LRC
+    can_delete = False
+
+# Define a new User admin
+class UserAdmin(UserAdmin):
+    inlines = (LRCInline, )
+
+# Re-register UserAdmin
+admin.site.unregister(User)
+admin.site.register(User, UserAdmin)

@@ -6,7 +6,12 @@ from results.models import Result,ResultFilter,ResultForm,Event,EventFilter,Even
 def results_index(request):
     f = ResultFilter(request.GET, queryset=Result.objects.all())
     # return render_to_response('payment/base_pay_index.html', {'payment_list': f})
-    return render(request,'results/base_result_index.html', {'result_list': f})# Create your views here.
+    return render(request,'results/base_result_index.html', {'result_list': f})
+
+def results_sql_index(request,member_id):
+    f = Result.objects.raw('SELECT r.*,c.member_id FROM results_result r,results_result_crew_members c where r.id = c.result_id and c.member_id = %s', [member_id])
+    # return render_to_response('payment/base_pay_index.html', {'payment_list': f})
+    return render(request,'results/base_result_sql_index.html', {'result_list': f})
 
 def result_detail(request, result_id):
     result = get_object_or_404(Result, pk=result_id)
@@ -72,12 +77,13 @@ def event_edit(request, event_id):
         form = EventForm(instance=event)
     return render(request, 'results/base_event_manage.html', {'form':form})
 
-
+@permission_required('results.delete_event')
 def event_delete(request, event_id):
     event = get_object_or_404(Event, pk=event_id)
     event.delete()
     return redirect('/results/event/')
 
+@permission_required('results.delete_result')
 def result_delete(request, result_id):
     result = get_object_or_404(Result, pk=result_id)
     result.delete()

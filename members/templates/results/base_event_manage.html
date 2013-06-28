@@ -6,7 +6,11 @@
 
 {% block content %}
 
-<h3>Add \ Edit Payment</h3>
+{% if request.get_full_path = '/results/event/manage/' %}
+	<h3>Add New Event</h3>
+{% else %}
+	<h3>Edit Event</h3>
+{% endif %}
 
 
 

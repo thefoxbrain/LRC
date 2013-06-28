@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import permission_required
 from django.shortcuts import render, get_object_or_404, redirect,render_to_response
 
 from payment.models import Payment,PaymentForm,PaymentFilter
@@ -18,12 +19,13 @@ def pay_detail(request, payment_id):
     payment = get_object_or_404(Payment, pk=payment_id)
     return render(request, 'payment/base_pay_detail.html', {'payment': payment})
 
+@permission_required('payment.delete_payment')
 def pay_delete(request, payment_id):
     payment = get_object_or_404(Payment, pk=payment_id)
     payment.delete()
     return redirect('/payment/')
 
-
+@permission_required('payment.add_payment')
 def create_payment(request,member_id):
     if member_id == '0':
         data = {}
@@ -38,6 +40,7 @@ def create_payment(request,member_id):
         return redirect('/payment/')
     return render(request, 'payment/base_pay_manage.html', {'form':form})
 
+@permission_required('payment.change_payment')
 def pay_edit(request, payment_id):
     pay = get_object_or_404(Payment, pk=payment_id)
     if request.method == 'POST':

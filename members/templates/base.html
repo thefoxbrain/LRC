@@ -29,11 +29,11 @@
 	
 	<script type="text/javascript" src="/members/static/bootstrap/js/bootstrap.min.js"></script>
 	
- <script type="text/javascript">
-$(function(){
- $("#myTable").tablesorter().tablesorterPager({container: $("#pager")});
+<script> 
+$(function(){ 
+     $("#myTable").tablesorter({widgets: ['zebra'], dateFormat: 'uk'}).tablesorterPager({container: $("#pager")});
  });
- </script>
+ </script>     
  
  <script>
 $(function() {
@@ -81,12 +81,14 @@ width: 5em;
 	<div class="navbar-inner">
 		<ul class="nav">
 			<li class="{% block active_membership %}{% endblock %}"><a href="/membership/">Membership</a></li>
-			<li class="{% block active_members %}{% endblock %}"><a href="/member/">Members</a></li>
+			<li class="{% block active_members %}{% endblock %}"><a href="/member/?member_status=A">Members</a></li>
 			<li class="{% block active_payments %}{% endblock %}"><a href="/payment/">Payments</a></li>
 			<li class="{% block active_events %}{% endblock %}"><a href="/results/event/">Events</a></li>
 			<li class="{% block active_results %}{% endblock %}"><a href="/results/">Results</a></li>
+			
+			{% if perms.account.edit_lrc %}
 	 		<li class="dropdown">
-				<a class="dropdown-toggle" data-toggle="dropdown" href="#">Add New<b class="caret"></b></a>
+				<a class="dropdown-toggle" data-toggle="dropdown" href="#"><img src="/members/static/icons/create.png" title="Add New..." width="24" length="24"><b class="caret"></b></a>
 				<ul class="dropdown-menu">
 					
 					{% if perms.payment.add_payment %}
@@ -105,6 +107,7 @@ width: 5em;
 						<li class="{% block active_addresult %}{% endblock %}"><a href="/results/create/0/">Result</a></li>
 					{% endif %}	
 				</ul>
+			{% endif %}	
 			</ul>			
 		</ul>
 		<ul class="nav pull-right">

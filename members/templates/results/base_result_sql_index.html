@@ -5,7 +5,8 @@
 {% block title %}List of Payments{% endblock %}
 
 {% block content %}
-<h3>Results</h3>
+<h3>Results {{ result_list.member_id }}</h3>
+
 {% if result_list %}
 
 <table id="myTable" class="table table-hover tablesorter">
@@ -73,7 +74,12 @@
 {% else %}
 <p>No results are available.</p>
 {% endif %}
+
+{% debug %}
+
 {% endblock %}
+
+
 
 {% block sidebar2 %}
     <form action="" method="get" class="input-medium">

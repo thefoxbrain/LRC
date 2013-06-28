@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import permission_required
 from django.shortcuts import render, get_object_or_404, redirect,render_to_response,HttpResponse
 from datetime import datetime, date
 import xlwt
@@ -24,6 +25,7 @@ def member_membership_index(request, membership_id):
     membership_list = Member.objects.filter(membership_type__id__exact = membership_id).order_by('id')
     return render(request,'member/base_membership_member.html', {'membership_list': membership_list })
 
+@permission_required('members.add_member')
 def create_member(request):
     form = MemberForm(request.POST or None)
     if form.is_valid():
@@ -33,6 +35,7 @@ def create_member(request):
         return redirect('/member/')
     return render(request, 'member/base_member_manage.html', {'form':form})
 
+@permission_required('members.change_member')
 def member_edit(request, member_id):
     member = get_object_or_404(Member, pk=member_id)
     if request.method == 'POST':

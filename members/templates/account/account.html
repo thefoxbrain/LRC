@@ -7,7 +7,7 @@
 {% block content %}
 <h1>{{ member.first_name }} {{ member.last_name }}</h1>
 
-<h3>User Details</h3>
+<h3>User Permissions</h3>
 <table class="table">
   <tbody>
     <tr>
@@ -19,14 +19,15 @@
 	</tr>
 	<tr>
 		<td>{{ user.username }}</td>
-		<td>{% if perms.members.add_member %}Add&nbsp;{% endif %}{% if perms.members.change_member %}Edit&nbsp;{% endif %}{% if perms.members.delete_member %}Delete&nbsp;{% endif %}</td>
-		<td>{% if perms.payment.add_payment %}Add&nbsp;{% endif %}{% if perms.payment.change_payment %}Edit&nbsp;{% endif %}{% if perms.payment.delete_payment %}Delete&nbsp;{% endif %}</td>
-		<td>{% if perms.results.add_event %}Add&nbsp;{% endif %}{% if perms.results.change_event %}Edit&nbsp;{% endif %}{% if perms.results.delete_event %}Delete&nbsp;{% endif %}</td>
-		<td>{% if perms.results.add_result %}Add&nbsp;{% endif %}{% if perms.results.change_result %}Edit&nbsp;{% endif %}{% if perms.results.delete_result %}Delete&nbsp;{% endif %}</td>
+		<td>{% if perms.members.add_member %}<img src="/members/static/icons/create.png" width="24" length="24">&nbsp;{% endif %}{% if perms.members.change_member %}<img src="/members/static/icons/edit.png" width="24" length="24">&nbsp;{% endif %}{% if perms.members.delete_member %}<img src="/members/static/icons/delete.png" width="24" length="24">&nbsp;{% endif %}</td>
+		<td>{% if perms.payment.add_payment %}<img src="/members/static/icons/create.png" width="24" length="24">&nbsp;{% endif %}{% if perms.payment.change_payment %}<img src="/members/static/icons/edit.png" width="24" length="24">&nbsp;{% endif %}{% if perms.payment.delete_payment %}<img src="/members/static/icons/delete.png" width="24" length="24">&nbsp;{% endif %}</td>
+		<td>{% if perms.results.add_event %}<img src="/members/static/icons/create.png" width="24" length="24">&nbsp;{% endif %}{% if perms.results.change_event %}<img src="/members/static/icons/edit.png" width="24" length="24">&nbsp;{% endif %}{% if perms.results.delete_event %}<img src="/members/static/icons/delete.png" width="24" length="24">&nbsp;{% endif %}</td>
+		<td>{% if perms.results.add_result %}<img src="/members/static/icons/create.png" width="24" length="24">&nbsp;{% endif %}{% if perms.results.change_result %}<img src="/members/static/icons/edit.png" width="24" length="24">&nbsp;{% endif %}{% if perms.results.delete_result %}<img src="/members/static/icons/delete.png" width="24" length="24">&nbsp;{% endif %}</td>
     </tr>
   </tbody>
   </table>
   
+{{ perms.members }}  
 <br>  
 
 <br>

@@ -73,7 +73,7 @@ class Member(models.Model):
     swim_tread = models.CharField(max_length=1, choices=YESNO_CHOICES, default='Y', blank=True,verbose_name='Tread water for 2 minutes')
     
     # Start Date   
-    start_date = models.DateField(("Start Date"), default=date.today)
+    start_date = models.DateField(("Start Date"), default=date.today,  blank=False)
     
     # Parent \ Guardian
     pg_name  = models.CharField(max_length=200,  blank=True, verbose_name='Parent \ Guardian')
@@ -119,7 +119,7 @@ class Member(models.Model):
         super(Member, self).save(*args, **kwargs)    
     
 class MemberFilter(django_filters.FilterSet):
-    full_name = django_filters.ModelChoiceFilter(queryset=Member.objects.order_by('full_name'))
+    full_name = django_filters.ModelChoiceFilter(queryset=Member.objects.filter(member_status='A').order_by('full_name'))
     payment_method = django_filters.ChoiceFilter(choices=FILTER_PAYMENTMETHOD_CHOICES, label='Payment Method')
     member_status = django_filters.ChoiceFilter(choices=FILTER_STATUS_CHOICES, label='Member Status')
         

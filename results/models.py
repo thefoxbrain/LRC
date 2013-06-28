@@ -33,7 +33,7 @@ class EventForm(ModelForm):
 class EventFilter(django_filters.FilterSet):
     event_name = django_filters.ModelChoiceFilter(queryset=Event.objects.order_by('-event_date'))
     event_type = django_filters.ChoiceFilter(choices=FILTER_EVENTTYPE_CHOICES, label='Event Type')
-    event_date = django_filters.DateFilter(lookup_type='gt')
+    event_date = django_filters.DateFilter(lookup_type='gte')
         
     class Meta:
         model = Event

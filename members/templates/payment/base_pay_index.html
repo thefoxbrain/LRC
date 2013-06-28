@@ -39,6 +39,10 @@
 			{% if perms.payment.delete_payment %}
 				<a href="/payment/delete/{{ payment.id }}/" title="Delete this payment"><img src="/members/static/icons/delete.png" alt="Delete" width="24" length="24"></a>
 			{% endif %}				
+			
+			{% if payment.payment_note != '' %}
+				<a href="/payment/manage/{{ payment.id }}/"><img src="/members/static/icons/note.png" title="This payment has a note" width="24" length="24"></a>
+			{% endif %}
 			</td>
 		</tr>
 	{% endfor %}
